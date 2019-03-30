@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 import Header from './components/Header';
-import Home from './components/Home'
+import Home from './components/Home/Home'
 import Profile from './components/Profile';
 
 class App extends Component {
@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <div className="App">
       <Header/>
+      <Route exact path="/" component={Home} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/profile" component={Profile} />
       </div>
