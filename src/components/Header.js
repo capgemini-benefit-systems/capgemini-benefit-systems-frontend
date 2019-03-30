@@ -16,7 +16,7 @@ export default class Header extends Component {
       <header style = {headerStyle}>
       Benefit Systems
       <div  style={{float:'right'}} className="logo">
-      <NavLink style={profileStyle} textDecoration='none' exact to="/url"> {this.state.name} </NavLink>
+      <NavLink style={profileStyle} exact to="/url"> {this.state.name} </NavLink>
       </div>
       </header>
     )
@@ -31,8 +31,12 @@ const headerStyle = {
 }
 const logoStyle = {
   textAlign: 'left'
+  
 }
 
 const profileStyle = {
-  textAlign: 'right'
+  textAlign: 'right',
+  textDecoration: 'none',
+  color: 'black'
+  
 }
