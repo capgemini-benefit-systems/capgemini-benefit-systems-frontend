@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import UserCell from './UserCell';
-import UserList from './UserList';
+import React, { Component } from 'react';
+import CustomizedTable from './CustomizedTable';
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <UserCell/>
+         <CustomizedTable/>
       </div>
     )
   }
