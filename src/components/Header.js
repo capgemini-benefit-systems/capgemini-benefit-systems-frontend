@@ -14,9 +14,9 @@ export default class Header extends Component {
   render() {
     return (
       <header style = {headerStyle}>
-      Benefit Systems
+      <NavLink style={profileStyle} exact to="/home"> Benefit Systems </NavLink>
       <div  style={{float:'right'}} className="logo">
-      <NavLink style={profileStyle} exact to="/url"> {this.state.name} </NavLink>
+      <NavLink style={profileStyle} exact to="/profile"> {this.state.name} </NavLink>
       </div>
       </header>
     )
