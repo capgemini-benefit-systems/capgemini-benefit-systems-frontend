@@ -14,7 +14,7 @@ export default class Header extends Component {
   render() {
     return (
       <header style = {headerStyle}>
-      <NavLink style={profileStyle} exact to="/home"> Benefit Systems </NavLink>
+      <NavLink style={logoStyle} exact to="/home"> Benefit Systems </NavLink>
       <div  style={{float:'right'}} className="logo">
       <NavLink style={profileStyle} exact to="/profile"> {this.state.name} </NavLink>
       </div>
@@ -25,18 +25,17 @@ export default class Header extends Component {
 
 const headerStyle = {
     background: '#fff',
-    color: '#3b90b2',
     textAlign: 'left',
     padding: '1rem'
 }
 const logoStyle = {
-  textAlign: 'left'
+  textAlign: 'left',
+  color: '#3b90b2',
+  textDecoration: 'none',
   
 }
-
 const profileStyle = {
   textAlign: 'right',
   textDecoration: 'none',
-  color: 'black'
-  
+  color: 'black',
 }
