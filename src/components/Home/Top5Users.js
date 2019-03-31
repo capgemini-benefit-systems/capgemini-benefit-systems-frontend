@@ -17,8 +17,10 @@ export default class Top5Users extends Component {
     
       componentDidMount() {
         fetch('localhost:8080/api/user')
-          .then(response => response.json())
-          .then(users => this.setState({ users }))
+          .then(response => {
+            const users = response.json()
+            this.setState({ users })
+          })
           .catch(err => {
             this.setState({ users: [{
                 name: "Jakub Dereń",
@@ -40,6 +42,8 @@ export default class Top5Users extends Component {
           }]})
           })
       }
+      
+
       
   render() {
     return (
