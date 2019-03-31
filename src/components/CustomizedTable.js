@@ -13,7 +13,7 @@ const CustomTableCell = withStyles(theme => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 13,
   },
 }))(TableCell);
 
@@ -24,7 +24,7 @@ const styles = theme => ({
     overflowX: 'auto',
   },
   table: {
-    minWidth: 700,
+    minWidth: '4rem',
   },
   row: {
     '&:nth-of-type(odd)': {
@@ -37,21 +37,19 @@ function createData(place, img, name, points) {
   return { place, img, name, points };
 }
 
-const rows = [
-  createData('1','m', 'Jakub Deren', '6000'),
-  createData('2','m', 'Jakub Deren', '6000'),
-  createData('3','m', 'Jakub Deren', '6000'),
-  createData('4','m', 'Jakub Deren', '6000'),
-  createData('5','m', 'Jakub Deren', '6000'),
-];
+function createRows(props) {
+  let rows = []
+  const {users} = props.props
+  props.props.map(user => (
+    rows.push(createData(user.place, user.img, user.name, user.points))
+  ))
+  return rows
+ 
+}
 
 function CustomizedTable(props) {
-
-    console.log(props)
-    console.log("KURWAAAA")
-
   const { classes } = props;
-
+  let rows = createRows(props)
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
