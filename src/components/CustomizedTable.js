@@ -44,7 +44,6 @@ function createRows(props) {
     rows.push(createData(user.place, user.img, user.name, user.points))
   ))
   return rows
- 
 }
 
 function CustomizedTable(props) {
