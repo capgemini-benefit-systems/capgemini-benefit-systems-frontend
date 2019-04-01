@@ -9,8 +9,9 @@ export default class Top5Users extends Component {
           users: []
         };
       }
+
       componentDidMount() {
-        fetch('http://172.20.10.3:8080/api/account/all',{
+        fetch('http://localhost:8080/api/user/top5',{
           method: 'get',
         dataType: 'json',
         headers: {
@@ -19,16 +20,9 @@ export default class Top5Users extends Component {
         }
         })
           .then(response => {
-            console.log(response.clone().json())
             if (response.ok) {
               return response.json()
-            } else {
-              console.log("RESPONSE NOT OK")
-            }
-            // var ausers = JSON.parse(response.clone().json())
-            // console.log("users:")
-            // console.log(ausers)
-            
+            } 
           })
           .then(data =>{
             this.setState({ users:data })
