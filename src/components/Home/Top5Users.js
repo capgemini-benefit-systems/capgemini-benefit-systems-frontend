@@ -32,8 +32,6 @@ export default class Top5Users extends Component {
           })
       }
       
-
-      
   render() {
     return (
       <div style={tableStyle}>
@@ -46,8 +44,8 @@ export default class Top5Users extends Component {
 const tableStyle = {
     float: 'right',
     width: '25%',
-    marginTop: '-1.5rem',
+    margin: '1rem, 1rem, 1rem, 1rem',
     position: '-webkit-sticky',
     position: 'sticky',
-    top: '0',
+    top: '2rem',
 }

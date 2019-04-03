@@ -33,10 +33,9 @@ const styles = theme => ({
 
 function AutoGrid(props) {
   const { classes } = props;
-
+  const project  = props.props
   return (
     <div className={classes.root}>
-     <NavLink style={naviStyle} exact to="/project">
       <Grid container 
       className={classes.cont}
       direction="column"
@@ -45,30 +44,30 @@ function AutoGrid(props) {
         <Grid item xs>
           <Paper className={classes.paper}>
             <div style ={photoStyle}>
-              <Typography >foto</Typography>
+              <NavLink style={naviStyle} exact to="/project"><img src ={project.photo}/></NavLink>
             </div>
           </Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-            <Typography variant="h4">Tytul</Typography>
+            <NavLink style={naviStyle} exact to="/project"><Typography variant="h4">{project.name}</Typography></NavLink>
           </Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-          <Typography variant="h5" >Liczba Miejsc: 3/7</Typography>
+          <Typography variant="h5" >Liczba Miejsc: {project.actualUsers}/{project.maxUsers}</Typography>
+          <NavLink style={naviStyle} exact to="/project"></NavLink>
           </Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.desc}>
             <Typography noWrap variant="p">
-            "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer,Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer  "
+              {project.description}
             </Typography>
+            <NavLink style={naviStyle} exact to="/project"></NavLink>
           </Paper>
         </Grid>
-
       </Grid>
-      </NavLink>
     </div>
   );
 }
@@ -81,6 +80,7 @@ const photoStyle = {
 const naviStyle = {
   textDecoration: 'none',
   color: '#ffffff',
+  width: '33%',
 }
 
 AutoGrid.propTypes = {
