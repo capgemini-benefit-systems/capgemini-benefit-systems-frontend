@@ -10,10 +10,10 @@ const styles = theme => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing.unit * 0,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    width:'',
+    padding: theme.spacing.unit * 0.1,
+    width: '200%',
+    color: theme.palette.background.secondary,
+    backgroundColor: 'white'
   },
   cont: {
     width: '74.5%',
