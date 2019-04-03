@@ -7,7 +7,7 @@ export default class AddActivity extends Component {
         super(props);
     
         this.state = {
-          name: "Add Activity",
+          name: "Add Project",
         };
       }
 
@@ -15,16 +15,16 @@ export default class AddActivity extends Component {
     return (
 
 
-      <header style = {addActivityStyle}> 
+      <header style = {addProjectStyle}> 
       <div>
-      <NavLink style={activityStyle} exact to="/project"> {this.state.name} </NavLink>
+      <NavLink style={projectStyle} exact to="/project"> {this.state.name} </NavLink>
       </div>
       </header> 
     )
   }
 }
 
-const addActivityStyle = {
+const addProjectStyle = {
     background: '#6a6a6a', //#fff
     textAlign: 'center',
     borderStyle: 'solid',
@@ -34,12 +34,9 @@ const addActivityStyle = {
     paddingTop:'15rem',
     paddingBottom: '15rem',
     margin: '1rem 55rem 0rem 1rem',
-   // marginRight: '55rem',
-    //marginLeft: '1rem',
-   // marginTop: '1rem',
 }
 
-const activityStyle = {
+const projectStyle = {
     textAlign: 'center',
     textDecoration: 'none',
     color: '#ffffff',

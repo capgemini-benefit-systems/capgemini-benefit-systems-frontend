@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Top5Users from './Top5Users';
 import Banner from './Banner';
-import AddActivity from './AddActivity';
+import AddProject from './AddProject';
 
 export default class Home extends Component {
   render() {
@@ -9,7 +9,7 @@ export default class Home extends Component {
       <div>
          <Top5Users/>
          <Banner/>
-         <AddActivity/>
+         <AddProject/>
       </div>
     )
   }
