@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import Dotdotdot from 'react-dotdotdot';
 
 const styles = theme => ({
   root: {
@@ -44,7 +45,7 @@ function AutoGrid(props) {
         <Grid item xs>
           <Paper className={classes.paper}>
             <div style ={photoStyle}>
-              <NavLink style={naviStyle} exact to="/project"><img src ={project.photo}/></NavLink>
+              <NavLink style={naviStyle} exact to="/project"><img width="100%" height="100%" src ="http://localhost:8080/api/project/photo"/></NavLink>
             </div>
           </Paper>
         </Grid>
@@ -61,9 +62,11 @@ function AutoGrid(props) {
         </Grid>
         <Grid item xs>
           <Paper className={classes.desc}>
-            <Typography noWrap variant="p">
+            <Dotdotdot clamp={3}>
+            <Typography variant="p">
               {project.description}
             </Typography>
+            </Dotdotdot>
             <NavLink style={naviStyle} exact to="/project"></NavLink>
           </Paper>
         </Grid>
