@@ -40,9 +40,10 @@ function createData(place, img, name, points) {
 function createRows(props) {
   let rows = []
   console.log(props.props)
+  var i = 1;
   props.props.map(user => (
-    rows.push(createData(user.id, user.img, user.name + " " + user.surname, user.pointsSum))
-  ))
+    rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
+    ))
   return rows
 }
 

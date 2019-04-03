@@ -11,7 +11,7 @@ export default class Top5Users extends Component {
       }
 
       componentDidMount() {
-        fetch('http://localhost:8080/api/user/top5',{
+        fetch('http://localhost:8080/api/user/top/5',{
           method: 'get',
         dataType: 'json',
         headers: {
