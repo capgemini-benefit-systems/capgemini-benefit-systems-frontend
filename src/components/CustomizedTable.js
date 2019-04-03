@@ -19,7 +19,7 @@ const CustomTableCell = withStyles(theme => ({
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: '95%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
   },

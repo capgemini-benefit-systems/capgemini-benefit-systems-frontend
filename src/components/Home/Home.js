@@ -13,6 +13,7 @@ export default class Home extends Component {
         <Top5Users/>
         <Banner/>
         <MiniProject/>
+
       </div>
     )
   }
