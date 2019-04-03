@@ -41,7 +41,8 @@ function createRows(props) {
   let rows = []
   console.log(props.props)
   var i = 1;
-  props.props.map(user => (
+  var tmp = [{"id":2,"email":null,"name":"Grzegorz","surname":"Tomasik","role":null,"pointsSum":9000,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":5,"email":null,"name":"Kacper","surname":"Jaros","role":null,"pointsSum":7392,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":4,"email":null,"name":"Michał","surname":"Bańka","role":null,"pointsSum":7372,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":1,"email":null,"name":"Jakub","surname":"Dereń","role":null,"pointsSum":5400,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":6,"email":null,"name":"Karolina","surname":"Madej","role":null,"pointsSum":5400,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]}]
+  tmp.map(user => (
     rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
     ))
   return rows

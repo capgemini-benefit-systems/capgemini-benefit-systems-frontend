@@ -29,9 +29,10 @@ const bannerStyle = {
     borderStyle: 'solid',
     borderColor: '#c9c9c9',
     borderWidth: '2px',
-    fontSize: '16pt',
+    fontSize: '2rem',
     padding:'2rem',
-    margin: '2rem 25rem 0rem 1rem',
+    margin: '2rem 0rem 0rem 1rem',
+    width: '68%',
     //marginRight: '25rem',
     //marginLeft: '1rem',
 }
