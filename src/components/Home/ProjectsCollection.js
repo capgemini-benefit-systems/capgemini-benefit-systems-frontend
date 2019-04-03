@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MiniProject from './MiniProject';
+import ProGrid from './ProGrid';
 
 export default class ProjectsCollection extends Component {
 
@@ -36,14 +37,7 @@ export default class ProjectsCollection extends Component {
   render() {
     return (
       <div>
-        {
-          this.state.projects.map((data) => {
-              {console.log(data)}
-            return <MiniProject props = {data}/>
-          })}
-
-        
-        
+          <ProGrid props={this.state.projects} />
       </div>
     )
   }

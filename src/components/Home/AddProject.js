@@ -37,5 +37,5 @@ const addProjectStyle = {
 const projectStyle = {
     textAlign: 'center',
     textDecoration: 'none',
-    color: '#ffffff',
+    color: '#000',
   }
