@@ -7,7 +7,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-dotdotdot": "^1.2.3",
+<<<<<<< HEAD
     "react-multiline-ellipsis": "^1.0.3",
+=======
+>>>>>>> origin/master
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-truncate": "^2.4.0"

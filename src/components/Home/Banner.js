@@ -7,16 +7,15 @@ export default class Banner extends Component {
         super(props);
     
         this.state = {
-          name: "Moje Projekty",
+          name: "Wszystkie Projekty",
         };
       }
 
-      
   render() {
     return (
         <header style = {bannerStyle}>    
         <div>
-        <NavLink style={projectStyle} exact to="/project"> {this.state.name} </NavLink>
+        {this.state.name}
         </div>
         </header>
     )

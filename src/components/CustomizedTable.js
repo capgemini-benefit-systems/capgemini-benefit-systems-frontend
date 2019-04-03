@@ -20,7 +20,12 @@ const CustomTableCell = withStyles(theme => ({
 const styles = theme => ({
   root: {
     width: '95%',
+<<<<<<< HEAD
     marginTop: theme.spacing.unit * 3,
+=======
+    // marginTop: theme.spacing.unit * 3,
+    marginRight: '1rem',
+>>>>>>> origin/master
     overflowX: 'auto',
   },
   table: {
@@ -39,10 +44,8 @@ function createData(place, img, name, points) {
 
 function createRows(props) {
   let rows = []
-  console.log(props.props)
   var i = 1;
-  var tmp = [{"id":2,"email":null,"name":"Grzegorz","surname":"Tomasik","role":null,"pointsSum":9000,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":5,"email":null,"name":"Kacper","surname":"Jaros","role":null,"pointsSum":7392,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":4,"email":null,"name":"Michał","surname":"Bańka","role":null,"pointsSum":7372,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":1,"email":null,"name":"Jakub","surname":"Dereń","role":null,"pointsSum":5400,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]},{"id":6,"email":null,"name":"Karolina","surname":"Madej","role":null,"pointsSum":5400,"currentPoints":null,"account":null,"transactions":[],"activityResults":[]}]
-  tmp.map(user => (
+  props.props.map(user => (
     rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
     ))
   return rows
