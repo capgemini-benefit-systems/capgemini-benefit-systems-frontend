@@ -29,13 +29,14 @@ const addProjectStyle = {
     borderColor: '#c9c9c9',
     borderWidth: '2px',
     fontSize: '60px',
-    paddingTop:'15rem',
-    paddingBottom: '15rem',
-    margin: '1rem 55rem 0rem 1rem',
+    height:'96%',
+    margin: '0% 67.5% 0% 0%',
+    width:'100%',
 }
 
 const projectStyle = {
     textAlign: 'center',
     textDecoration: 'none',
     color: '#000',
+    
   }

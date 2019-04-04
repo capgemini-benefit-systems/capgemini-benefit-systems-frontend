@@ -10,7 +10,6 @@ import Dotdotdot from 'react-dotdotdot';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    overflow: 'hidden',
   },
   paper: {
     padding: theme.spacing.unit * 0.1,
@@ -26,18 +25,18 @@ const styles = theme => ({
     
   },
   cont: {
-    width: '33%',
+    width: '100%',
     padding: '1rem 1rem 1rem 1rem',
 
   },
 });
 
-function AutoGrid(props) {
+function ComplexGrid(props) {
   const { classes } = props;
   const project  = props.props
   return (
     <div className={classes.root}>
-      <Grid container 
+      <Grid container md
       className={classes.cont}
       direction="column"
       wrap="nowrap"
@@ -49,18 +48,20 @@ function AutoGrid(props) {
             </div>
           </Paper>
         </Grid>
+        
         <Grid item xs>
+
           <Paper className={classes.paper}>
             <NavLink style={naviStyle} exact to="/project"><Typography variant="h4">{project.name}</Typography></NavLink>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item xs >
           <Paper className={classes.paper}>
           <Typography variant="h5" >Liczba Miejsc: {project.actualUsers}/{project.maxUsers}</Typography>
           <NavLink style={naviStyle} exact to="/project"></NavLink>
           </Paper>
         </Grid>
-        <Grid item xs>
+        <Grid item  xs>
           <Paper className={classes.desc}>
             <Dotdotdot clamp={3}>
             <Typography variant="p">
@@ -71,6 +72,7 @@ function AutoGrid(props) {
           </Paper>
         </Grid>
       </Grid>
+ 
     </div>
   );
 }
@@ -86,8 +88,8 @@ const naviStyle = {
   width: '33%',
 }
 
-AutoGrid.propTypes = {
+ComplexGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AutoGrid);
+export default withStyles(styles)(ComplexGrid);

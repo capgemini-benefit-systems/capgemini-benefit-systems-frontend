@@ -9,15 +9,21 @@ import AddProject from './AddProject';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+
   },
+  
   paper: {
     padding: theme.spacing.unit * 0,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    width:'',
+    width: '100%',
+    height: '100%',
+    marginLeft:'0%',
+    backgroundColor: '#fafafa',
+    borderColor: '#fafafa',
   },
   cont: {
-    width: '74.5%',
+    width: '75%',
     padding: '1rem 1rem 1rem 1rem',
 
   },
@@ -35,7 +41,7 @@ function CenteredGrid(props) {
           <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
         </Grid>
           })}
-        <Grid item xs={6}>
+        <Grid  item xs={6}>
           <Paper className={classes.paper}><AddProject/></Paper>
         </Grid>
       </Grid>
