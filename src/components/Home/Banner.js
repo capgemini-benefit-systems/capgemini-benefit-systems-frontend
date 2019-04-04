@@ -25,15 +25,18 @@ export default class Banner extends Component {
 const bannerStyle = {
     background: '#FFFFFF', //#fff
     textAlign: 'center',
-    borderStyle: 'solid',
-    borderColor: '#c9c9c9',
-    borderWidth: '2px',
     fontSize: '2rem',
+    borderColor: '#c9c9c9',
+    borderStyle: 'solid',
     padding:'2rem',
+   /*
+    borderWidth: '2px',
+    
+   
     margin: '2rem 0rem 0rem 1rem',
-    width: '68%',
+    width: '100%',
     //marginRight: '25rem',
-    //marginLeft: '1rem',
+    //marginLeft: '1rem',*/
 }
 
 const projectStyle = {

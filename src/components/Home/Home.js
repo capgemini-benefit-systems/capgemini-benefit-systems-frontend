@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Top5Users from './Top5Users';
-import Banner from './Banner';
 import AddProject from './AddProject';
 import MiniatureProject from './MiniatureProject';
 import MiniProject from './MiniProject';
@@ -12,7 +11,6 @@ export default class Home extends Component {
     return (
       <div>
         <Top5Users/>
-        <Banner/>
         <ProjectsCollection/>
       </div>
     )
