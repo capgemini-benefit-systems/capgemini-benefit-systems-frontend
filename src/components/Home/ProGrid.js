@@ -34,14 +34,14 @@ function CenteredGrid(props) {
   const projects = props.props;
   return (
     <div className={classes.root}>
-      <Grid container className={classes.cont} spacing ={12}>
+      <Grid container className={classes.cont} spacing ={32}>
 
       {projects.map((data) => {
-           return <Grid item xs={6}>
+           return <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
         </Grid>
           })}
-        <Grid  item xs={6}>
+        <Grid  item xs={12} sm={6}>
           <Paper className={classes.paper}><AddProject/></Paper>
         </Grid>
       </Grid>

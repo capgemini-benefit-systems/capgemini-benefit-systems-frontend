@@ -36,40 +36,31 @@ function ComplexGrid(props) {
   const project  = props.props
   return (
     <div className={classes.root}>
-      <Grid container md
+      <Grid item md
       className={classes.cont}
       direction="column"
       wrap="nowrap"
       >
         <Grid item xs>
-          <Paper className={classes.paper}>
             <div style ={photoStyle}>
               <NavLink style={naviStyle} exact to="/project"><img width="100%" height="100%" src ="http://localhost:8080/api/project/photo"/></NavLink>
             </div>
-          </Paper>
         </Grid>
         
         <Grid item xs>
-
-          <Paper className={classes.paper}>
             <NavLink style={naviStyle} exact to="/project"><Typography variant="h4">{project.name}</Typography></NavLink>
-          </Paper>
         </Grid>
         <Grid item xs >
-          <Paper className={classes.paper}>
           <Typography variant="h5" >Liczba Miejsc: {project.actualUsers}/{project.maxUsers}</Typography>
           <NavLink style={naviStyle} exact to="/project"></NavLink>
-          </Paper>
         </Grid>
         <Grid item  xs>
-          <Paper className={classes.desc}>
             <Dotdotdot clamp={3}>
             <Typography variant="p">
               {project.description}
             </Typography>
             </Dotdotdot>
             <NavLink style={naviStyle} exact to="/project"></NavLink>
-          </Paper>
         </Grid>
       </Grid>
  
