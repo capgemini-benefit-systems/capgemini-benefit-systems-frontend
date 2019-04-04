@@ -47,5 +47,5 @@ const tableStyle = {
     margin: '1rem, 1rem, 1rem, 1rem',
     position: '-webkit-sticky',
     position: 'sticky',
-    top: '2rem',
+    top: '4.2rem',
 }
