@@ -26,20 +26,19 @@ const bannerStyle = {
     background: '#FFFFFF', //#fff
     textAlign: 'center',
     fontSize: '2rem',
-    borderColor: '#c9c9c9',
-    borderStyle: 'solid',
-    padding:'2rem',
+    padding:'1rem',
+    color: '#696969',
+
    /*
     borderWidth: '2px',
-    
-   
     margin: '2rem 0rem 0rem 1rem',
     width: '100%',
     //marginRight: '25rem',
     //marginLeft: '1rem',*/
 }
-
+/*
 const projectStyle = {
     textDecoration: 'none',
     color: 'black',
   }
+*/

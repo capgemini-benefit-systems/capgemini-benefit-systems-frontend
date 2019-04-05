@@ -23,14 +23,11 @@ export default class AddActivity extends Component {
 }
 
 const addProjectStyle = {
-    background: '#6a6a6a', //#fff
+    background: '',//'#6a6a6a'
     textAlign: 'center',
-    borderStyle: 'solid',
-    borderColor: '#c9c9c9',
-    borderWidth: '2px',
-    fontSize: '60px',
-    height:'96%',
-    margin: '0% 67.5% 0% 0%',
+    padding:'38% 0% 0% 0%',
+    fontSize: '3rem',
+    height:'100%',
     width:'100%',
 }
 
@@ -38,5 +35,4 @@ const projectStyle = {
     textAlign: 'center',
     textDecoration: 'none',
     color: '#000',
-    
   }

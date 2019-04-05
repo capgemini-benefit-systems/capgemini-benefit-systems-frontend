@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import MiniProject from './MiniProject';
 import AddProject from './AddProject';
 import Banner from './Banner';
+import { Typography } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -28,6 +29,12 @@ const styles = theme => ({
     padding: '1rem 1rem 1rem 1rem',
 
   },
+  fonting: {
+    backgroundColor: '#ffffff',
+    color: 'black',
+    padding: '1rem 0rem 1rem 0rem',
+    variant: 'overline',
+  },
 });
 
 function CenteredGrid(props) {
@@ -37,7 +44,9 @@ function CenteredGrid(props) {
     <div className={classes.root}>
       <Grid container className={classes.cont} spacing ={32}>
       <Grid item xs={12}>
-        <Banner/>
+        <Paper className={classes.paper}>
+          <Banner/>
+        </Paper>
       </Grid>
       
       {projects.map((data) => {
