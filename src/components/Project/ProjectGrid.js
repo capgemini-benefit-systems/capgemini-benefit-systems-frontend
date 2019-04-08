@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import MiniProject from './MiniProject';
-import AddProject from './AddProject';
-import Banner from './Banner';
+// import MiniProject from './MiniProject';
+// import AddProject from './AddProject';
+import Banner from '../Home/Banner';
 import { Typography } from '@material-ui/core';
 
 const styles = theme => ({
@@ -35,6 +35,16 @@ const styles = theme => ({
     padding: '1rem 0rem 1rem 0rem',
     variant: 'overline',
   },
+  descritpion: {
+    padding: theme.spacing.unit * 0,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    width: '100%',
+    height: '500px',
+    marginLeft:'0%',
+    backgroundColor: '#fafafa',
+    borderColor: '#fafafa',
+  },
 });
 
 function CenteredGrid(props) {
@@ -45,18 +55,29 @@ function CenteredGrid(props) {
       <Grid container className={classes.cont} spacing ={32}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <Banner title={"Wszystkie Projekty"}/>
+          <Banner title={'Add Date'}/>
         </Paper>
       </Grid>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <Banner title={'Zapisz się'}/>
+        </Paper>
+      </Grid>
+
+      <Grid item xs={12} className={classes.descritpion}>
+        <label>
+            <input type="text" name="description"/>
+        </label>
+      </Grid>
       
-      {projects.map((data) => {
+      {/* {projects.map((data) => {
            return <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
         </Grid>
           })}
         <Grid  item xs={12} sm={6}>
           <Paper className={classes.paper}><AddProject/></Paper>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );
@@ -65,5 +86,9 @@ function CenteredGrid(props) {
 CenteredGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+const descriptionStyle = {
+    maxHeight: '20%',
+}
 
 export default withStyles(styles)(CenteredGrid);

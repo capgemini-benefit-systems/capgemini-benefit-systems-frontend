@@ -5,7 +5,6 @@ export default class Banner extends Component {
 
     constructor(props) {
         super(props);
-    
         this.state = {
           name: "Wszystkie Projekty",
         };
@@ -15,7 +14,8 @@ export default class Banner extends Component {
     return (
         <header style = {bannerStyle}>    
         <div>
-        {this.state.name}
+          {console.log(this.props)}
+        {this.props.title}
         </div>
         </header>
     )
