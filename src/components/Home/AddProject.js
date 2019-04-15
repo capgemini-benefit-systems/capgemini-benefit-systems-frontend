@@ -15,7 +15,7 @@ export default class AddActivity extends Component {
     return (
       <header style = {addProjectStyle}> 
       <div>
-      <NavLink style={projectStyle} exact to="/project"> {this.state.name} </NavLink>
+      <NavLink style={projectStyle} exact to="/new_project"> {this.state.name} </NavLink>
       </div>
       </header> 
     )

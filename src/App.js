@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Header from './components/Header';
 import Home from './components/Home/Home'
 import Profile from './components/Profile';
+import Project from './components/Project/Project';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
       <Route exact path="/" component={Home} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/profile" component={Profile} />
+      <Route exact path="/new_project" component={Project} />
       </div>
     );
   }
