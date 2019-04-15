@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 // import MiniProject from './MiniProject';
 // import AddProject from './AddProject';
 import Banner from '../Home/Banner';
-import { Typography } from '@material-ui/core';
+import OutlinedTextField from './TextField';
+
 
 const styles = theme => ({
   root: {
@@ -45,7 +46,22 @@ const styles = theme => ({
     backgroundColor: '#fafafa',
     borderColor: '#fafafa',
   },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+  },
+  dense: {
+    marginTop: 16,
+  },
+  menu: {
+    width: 200,
+  },
 });
+
 
 function CenteredGrid(props) {
   const { classes } = props;
@@ -60,14 +76,18 @@ function CenteredGrid(props) {
       </Grid>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <Banner title={'Zapisz się'}/>
+          <Banner title={'Sign up'}/>
         </Paper>
       </Grid>
 
       <Grid item xs={12} className={classes.descritpion}>
-        <label>
-            <input type="text" name="description"/>
-        </label>
+      <OutlinedTextField/>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <Banner title={'Save'}/>
+        </Paper>
       </Grid>
       
       {/* {projects.map((data) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Banner from '../Home/Banner';
 import ProjectGrid from './ProjectGrid';
-
+import Top5Users from '../Home/Top5Users';
 
 export default class Project extends Component {
     constructor(props) {
@@ -18,8 +18,11 @@ export default class Project extends Component {
     return (
       <div>
           {console.log(this.state.img)}
+          
         <div> <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img></div>
+        <Top5Users/>
         <ProjectGrid/>
+        
 
       </div>
     )
