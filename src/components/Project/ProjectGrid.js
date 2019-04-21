@@ -7,9 +7,12 @@ import Grid from '@material-ui/core/Grid';
 import Banner from '../Home/Banner';
 import OutlinedTextField from './OutlinedTextFields';
 import TextField from '@material-ui/core/TextField';
-import Calendar from 'react-input-calendar'
+//import Calendar from 'react-input-calendar'
 import React, { Component } from 'react'
 import Project from './Project';
+import Datepick from './Datepick';
+import { NavLink } from 'react-router-dom'
+import Calendar from 'react-input-calendar'
 
 
 const styles = theme => ({
@@ -86,22 +89,27 @@ class ProjectGrid extends Component {
 
       <div className={classes.root}>
         <Grid container className={classes.cont} spacing ={32}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            {/* <Banner title={'Add Date'}/> */}
-            <TextField
+        <Grid item xs={12}>      
+         {/* <Paper className={classes.paper}>*/ }
+          
+          
+          <TextField
             id="standard-uncontrolled"
             label="Add Date"
             defaultValue=""
             className={classes.textField}
             margin="normal"
-          />
-          </Paper>
+            />
+          
+          
+        
           
         </Grid>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
+          <NavLink style={projectStyle} exact to="/new_project">
             <Banner title={'Sign up'}/>
+          </NavLink>
           </Paper>
         </Grid>
   
@@ -111,7 +119,9 @@ class ProjectGrid extends Component {
   
         <Grid item xs={12}>
           <Paper className={classes.paper}>
+          <NavLink style={projectStyle} exact to="/new_project">
             <Banner title={'Save'}/>
+          </NavLink>
           </Paper>
         </Grid>
         
@@ -135,6 +145,12 @@ ProjectGrid.propTypes = {
 
 const descriptionStyle = {
     maxHeight: '20%',
+}
+
+const projectStyle = {
+  textAlign: 'center',
+  textDecoration: 'none',
+  color: '#000',
 }
 
 export default withStyles(styles)(ProjectGrid);

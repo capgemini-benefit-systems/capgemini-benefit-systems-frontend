@@ -3,6 +3,7 @@ import Banner from '../Home/Banner';
 import ProjectGrid from './ProjectGrid';
 import Top5Users from '../Home/Top5Users';
 import  Datebox  from './Datebox';
+import Calendar from 'react-input-calendar'
 
 export default class Project extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ export default class Project extends Component {
         </div>
         <Top5Users/>
         <ProjectGrid state={this.state}/>
+        <Calendar format='DD/MM/YYYY' date='4-12-2014' />
         
 
       </div>
@@ -50,6 +52,6 @@ const container = {
 const position = {
   position: 'absolute',
   top: '30%',
-  left: '45rem',
+  left: '50%',
   transform: 'translate(-50%, -50%)',
 }
