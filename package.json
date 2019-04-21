@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "moment": "^2.24.0",
+    "moment-range": "^4.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-dotdotdot": "^1.2.3",
+    "react-input-calendar": "^0.5.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },

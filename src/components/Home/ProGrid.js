@@ -39,7 +39,7 @@ const styles = theme => ({
 
 function CenteredGrid(props) {
   const { classes } = props;
-  const projects = props.props;
+  const projects = props.projects;
   return (
     <div className={classes.root}>
       <Grid container className={classes.cont} spacing ={32}>

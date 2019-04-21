@@ -10,7 +10,7 @@ export default class Project extends Component {
         this.state = {
           title: "",
           img: "img/defaultImage.jpg",
-          date: "",
+          date: "21-04-2018",
           description: "",
           activities: []
         };
@@ -25,7 +25,7 @@ export default class Project extends Component {
           <div style ={position}><Datebox/></div>
         </div>
         <Top5Users/>
-        <ProjectGrid/>
+        <ProjectGrid state={this.state}/>
         
 
       </div>

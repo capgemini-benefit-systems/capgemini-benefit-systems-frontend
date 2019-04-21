@@ -24,16 +24,14 @@ const styles = theme => ({
 
 class OutlinedTextFields extends React.Component {
   state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
+    description: '',
   };
 
-  handleChange = name => event => {
+  handleChange = event => {
     this.setState({
-      [name]: event.target.value,
+      description: event.target.value,
     });
+    this.props.callbackParent(this.state.description);
   };
 
   render() {
@@ -50,6 +48,7 @@ class OutlinedTextFields extends React.Component {
           className={classes.textField}
           margin="normal"
           variant="outlined"
+          onChange={this.handleChange}
         />
     );
   }

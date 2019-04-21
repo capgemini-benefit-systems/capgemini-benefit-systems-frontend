@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -6,7 +5,11 @@ import Grid from '@material-ui/core/Grid';
 // import MiniProject from './MiniProject';
 // import AddProject from './AddProject';
 import Banner from '../Home/Banner';
-import OutlinedTextField from './TextField';
+import OutlinedTextField from './OutlinedTextFields';
+import TextField from '@material-ui/core/TextField';
+import Calendar from 'react-input-calendar'
+import React, { Component } from 'react'
+import Project from './Project';
 
 
 const styles = theme => ({
@@ -62,48 +65,71 @@ const styles = theme => ({
   },
 });
 
+class ProjectGrid extends Component {
 
-function CenteredGrid(props) {
-  const { classes } = props;
-  const projects = props.props;
-  return (
-    <div className={classes.root}>
-      <Grid container className={classes.cont} spacing ={32}>
-      <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Banner title={'Add Date'}/>
-        </Paper>
-      </Grid>
-      <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Banner title={'Sign up'}/>
-        </Paper>
-      </Grid>
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: "",
+      description: "",
+      activities: []
+    };
+  }
 
-      <Grid item xs={12} className={classes.descritpion}>
-      <OutlinedTextField/>
-      </Grid>
+   onChildDescriptionChanged(newState) {
+    this.setState({ description: newState })
+  }
 
-      <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Banner title={'Save'}/>
-        </Paper>
-      </Grid>
-      
-      {/* {projects.map((data) => {
-           return <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
+   render() {
+    const { classes } = this.props;
+    return (
+
+      <div className={classes.root}>
+        <Grid container className={classes.cont} spacing ={32}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            {/* <Banner title={'Add Date'}/> */}
+            <TextField
+            id="standard-uncontrolled"
+            label="Add Date"
+            defaultValue=""
+            className={classes.textField}
+            margin="normal"
+          />
+          </Paper>
+          
         </Grid>
-          })}
-        <Grid  item xs={12} sm={6}>
-          <Paper className={classes.paper}><AddProject/></Paper>
-        </Grid> */}
-      </Grid>
-    </div>
-  );
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <Banner title={'Sign up'}/>
+          </Paper>
+        </Grid>
+  
+        <Grid item xs={12} className={classes.descritpion}>
+        <OutlinedTextField callbackParent={(newState) => this.onChildDescriptionChanged(newState) } />
+        </Grid>
+  
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <Banner title={'Save'}/>
+          </Paper>
+        </Grid>
+        
+        {/* {projects.map((data) => {
+             return <Grid item xs={12} sm={6}>
+            <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
+          </Grid>
+            })}
+          <Grid  item xs={12} sm={6}>
+            <Paper className={classes.paper}><AddProject/></Paper>
+          </Grid> */}
+        </Grid>
+      </div>
+    );
+  }
 }
 
-CenteredGrid.propTypes = {
+ProjectGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -111,4 +137,6 @@ const descriptionStyle = {
     maxHeight: '20%',
 }
 
-export default withStyles(styles)(CenteredGrid);
+export default withStyles(styles)(ProjectGrid);
+
+

@@ -27,8 +27,6 @@ export default class ProjectsCollection extends Component {
       })
       .then(data =>{
         this.setState({ projects:data })
-        console.log("projects:")
-        console.log(this.state.projects)
       })
       .catch(err => {
         console.log(err)
@@ -37,7 +35,7 @@ export default class ProjectsCollection extends Component {
   render() {
     return (
       <div>
-          <ProGrid props={this.state.projects} />
+          <ProGrid projects={this.state.projects} />
       </div>
     )
   }
