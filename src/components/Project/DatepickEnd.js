@@ -31,7 +31,7 @@ class MaterialUIPickers extends React.Component {
         <Grid container className={classes.grid} justify="space-around">
           <DatePicker
             margin="normal"
-            label="Start date"
+            label="Finish date"
             value={selectedDate}
             onChange={this.handleDateChange}
           />

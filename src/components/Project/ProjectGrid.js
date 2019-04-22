@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react'
 import Project from './Project';
 import Datepick from './Datepick';
+import DatepickEnd from './DatepickEnd';
 import { NavLink } from 'react-router-dom'
 
 
@@ -93,6 +94,7 @@ class ProjectGrid extends Component {
           
 
         <Datepick/>
+        <DatepickEnd/>
         
           
         </Grid>
