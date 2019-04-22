@@ -12,7 +12,6 @@ import React, { Component } from 'react'
 import Project from './Project';
 import Datepick from './Datepick';
 import { NavLink } from 'react-router-dom'
-import Calendar from 'react-input-calendar'
 
 
 const styles = theme => ({
@@ -92,16 +91,8 @@ class ProjectGrid extends Component {
         <Grid item xs={12}>      
          {/* <Paper className={classes.paper}>*/ }
           
-          
-          <TextField
-            id="standard-uncontrolled"
-            label="Add Date"
-            defaultValue=""
-            className={classes.textField}
-            margin="normal"
-            />
-          
-          
+
+        <Datepick/>
         
           
         </Grid>
