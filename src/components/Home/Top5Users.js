@@ -25,6 +25,7 @@ export default class Top5Users extends Component {
             } 
           })
           .then(data =>{
+            console.log(data)
             this.setState({ users:data })
           })
           .catch(err => {
@@ -35,7 +36,7 @@ export default class Top5Users extends Component {
   render() {
     return (
       <div style={tableStyle}>
-        <CustomizedTable props={this.state.users}/>
+        <CustomizedTable users={this.state.users}/>
       </div>
     )
   }

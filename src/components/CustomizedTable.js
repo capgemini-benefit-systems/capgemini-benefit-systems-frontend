@@ -41,7 +41,7 @@ function createData(place, img, name, points) {
 function createRows(props) {
   let rows = []
   var i = 1;
-  props.props.map(user => (
+  props.users.map(user => (
     rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
     ))
   return rows

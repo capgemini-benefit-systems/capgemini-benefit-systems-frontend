@@ -14,7 +14,6 @@ export default class Banner extends Component {
     return (
         <header style = {bannerStyle}>    
         <div>
-          {console.log(this.props)}
         {this.props.title}
         </div>
         </header>

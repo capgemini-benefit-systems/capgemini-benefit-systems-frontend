@@ -15,11 +15,14 @@ const styles = {
 class MaterialUIPickers extends React.Component {
   state = {
     // The first commit of Material-UI
-    selectedDate: new Date('2019-04-22'),
+    selectedDate: new Date(),
   };
 
-  handleDateChange = date => {
-    this.setState({ selectedDate: date });
+  handleChange = date => {
+    this.setState({
+      selectedDate: date,
+    });
+    this.props.callbackParent(this.state.selectedDate);
   };
 
   render() {
@@ -31,9 +34,9 @@ class MaterialUIPickers extends React.Component {
         <Grid container className={classes.grid} justify="space-around">
           <DatePicker
             margin="normal"
-            label="Start date"
+            label={this.props.label}
             value={selectedDate}
-            onChange={this.handleDateChange}
+            onChange={this.handleChange}
           />
 
         </Grid>

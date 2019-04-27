@@ -5,9 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import moment from 'moment';
-
-
-
+ 
+ 
+ 
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -25,22 +25,22 @@ const styles = theme => ({
     width: 200,
   },
 });
-
-class TextFields extends React.Component {
+ 
+class ProjectNameTextField extends React.Component {
   state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
+    name: '',
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
+  handleChange = event => {
+    this.setState({
+      name: event.target.value,
+    });
+    this.props.callbackParent(this.state.name);
   };
-
+ 
   render() {
     const { classes } = this.props;
-
+ 
     return (
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
@@ -49,14 +49,15 @@ class TextFields extends React.Component {
           defaultValue=""
           className={classes.textField}
           margin="normal"
+          onChange={this.handleChange}
         />
-
+ 
       </form>
     );
   }
 }
-
-TextFields.propTypes = {
+ 
+ProjectNameTextField.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(TextFields);
+export default withStyles(styles)(ProjectNameTextField);
