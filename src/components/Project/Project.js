@@ -31,12 +31,14 @@ export default class Project extends Component {
            description: newState.description,
            startDate: newState.startDate,
            endDate: newState.endDate,
+           maxUsers: newState.maxUsers,
          })
          console.log(this.state.title)
          console.log(newState.description)
-         userService.saveNewProject(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img)
+         userService.saveNewProject(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img, newState.maxUsers)
         .then(result => {
           console.log(result)
+         this.props.history.push(`/`);
           },
           error => console.log(error) //this.setState({ error, loading: false })
         );
@@ -49,7 +51,7 @@ export default class Project extends Component {
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
           <div style={namePositionStyle}><ProjectNameTextField callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
         </div>
-        <Top5Users/>
+      
         <ProjectGrid callbackParent={(newState) => this.onChildSaveClicked(newState)} />
         
 

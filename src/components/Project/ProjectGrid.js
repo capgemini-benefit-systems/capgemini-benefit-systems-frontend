@@ -22,6 +22,7 @@ class ProjectGrid extends Component {
       endDate: new Date(),
       description: "",
       activities: [],
+      maxUsers: 0,
     };
   }
 
@@ -36,9 +37,14 @@ class ProjectGrid extends Component {
   onChildEndDateChanged(newState) {
     this.setState({ endDate: newState })
   }
+  handleChangeMaxUsers = event => {
+    event.preventDefault();
+    this.setState({maxUsers:event.target.value})
+  }
 
   handleSave = event => {
     event.preventDefault();
+    console.log(this.state.maxUsers)
     this.props.callbackParent(this.state);
   }
 
@@ -69,6 +75,23 @@ class ProjectGrid extends Component {
   
         <Grid item xs={12}>
           <Paper className={classes.paper}>
+          <TextField
+          id="standard-number"
+          label="Max users"
+          value={this.state.age}
+          onChange={this.handleChangeMaxUsers}
+          type="number"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+        />
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
           <Button style={saveStyle}
                 block
                 bsSize="large"
@@ -97,6 +120,11 @@ class ProjectGrid extends Component {
 ProjectGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+const textFieldStyle = {
+  marginTop: "auto",
+  marginBottom: "auto",
+}
 
 const descriptionStyle = {
     maxHeight: '20%',

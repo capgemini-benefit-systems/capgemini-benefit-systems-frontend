@@ -62,13 +62,13 @@ function register(username, password) {
         });
 }
 
-function saveNewProject(name, description, startDate, endDate, img) {
+function saveNewProject(name, description, startDate, endDate, img, maxUsers) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
         "cache-control": "no-cache",},
         "processData": false,
-        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img, "maxUsers":45, "actualUsers":12, "stage":"REGISTRATION"})
+        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img, "maxUsers":parseInt(maxUsers), "actualUsers":0, "stage":"REGISTRATION"})
     };
 
     return fetch(`${config.apiUrl}/api/project/add`, requestOptions)
