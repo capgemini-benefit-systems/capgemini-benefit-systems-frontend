@@ -31,7 +31,7 @@ class OutlinedTextFields extends React.Component {
     this.setState({
       description: event.target.value,
     });
-    this.props.callbackParent(this.state.description);
+    this.props.callbackParent(event.target.value);
   };
 
   render() {

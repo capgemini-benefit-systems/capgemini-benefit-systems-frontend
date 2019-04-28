@@ -24,7 +24,6 @@ export default class Project extends Component {
       };
 
       onChildSaveClicked(newState) {
-        console.log(newState.description)
         // this.state.description = newState.description
         // this.state.startDate = newState.startDate
         // this.state.endDate = newState.endDate
@@ -33,7 +32,8 @@ export default class Project extends Component {
            startDate: newState.startDate,
            endDate: newState.endDate,
          })
-
+         console.log(this.state.title)
+         console.log(newState.description)
          userService.saveNewProject(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img)
         .then(result => {
           console.log(result)

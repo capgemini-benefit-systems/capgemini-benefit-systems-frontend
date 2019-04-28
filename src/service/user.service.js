@@ -68,7 +68,7 @@ function saveNewProject(name, description, startDate, endDate, img) {
         headers: { 'Content-Type': 'application/json',
         "cache-control": "no-cache",},
         "processData": false,
-        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img})
+        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img, "maxUsers":45, "actualUsers":12, "stage":"REGISTRATION"})
     };
 
     return fetch(`${config.apiUrl}/api/project/add`, requestOptions)

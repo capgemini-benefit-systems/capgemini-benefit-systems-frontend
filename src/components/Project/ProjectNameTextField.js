@@ -35,7 +35,7 @@ class ProjectNameTextField extends React.Component {
     this.setState({
       name: event.target.value,
     });
-    this.props.callbackParent(this.state.name);
+    this.props.callbackParent(event.target.value);
   };
  
   render() {
