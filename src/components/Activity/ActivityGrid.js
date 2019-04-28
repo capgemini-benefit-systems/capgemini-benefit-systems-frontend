@@ -5,17 +5,14 @@ import Grid from '@material-ui/core/Grid';
 // import MiniProject from './MiniProject';
 // import AddProject from './AddProject';
 import Banner from '../Home/Banner';
-import OutlinedTextField from './OutlinedTextFields';
+import OutlinedTextField from '../Project/OutlinedTextFields';
 import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react'
-import Project from './Project';
-import Datepick from './Datepick';
+import Datepick from '../Project/Datepick';
 import { Button} from "react-bootstrap";
 import MiniProject from '../Home/MiniProject';
-import AddActivity from './AddActivity';
-import MiniActivity from '../Activity/MiniActivity';
 
-class ProjectGrid extends Component {
+class ActivityGrid extends Component {
 
   constructor(props) {
     super(props);
@@ -27,7 +24,8 @@ class ProjectGrid extends Component {
         description: "",
         activities: [],
         maxUsers: 0,
-        submit: "Save"
+        submit: "Save",
+        points: 0
       };
       
     } else {
@@ -38,7 +36,8 @@ class ProjectGrid extends Component {
         description: props.state.description,
         activities: props.state.activities,
         maxUsers: props.state.maxUsers,
-        submit: "Join"
+        submit: "Join",
+        points: props.state.points
       };
     }
   }
@@ -59,16 +58,16 @@ class ProjectGrid extends Component {
     this.setState({maxUsers:event.target.value})
   }
 
+  handleChangePoints = event => {
+    event.preventDefault();
+    this.setState({points:event.target.value})
+  }
+
   handleSave = event => {
     event.preventDefault();
     console.log(this.state.maxUsers)
-    this.props.callbackParent(this.state);
-  }
 
-  onChildActivityAdded(newState) {
-    var newArray = this.state.activities.slice();    
-    newArray.push(newState);   
-    this.setState({activities:newArray})
+    this.props.callbackParent(this.state);
   }
 
    render() {
@@ -106,18 +105,20 @@ class ProjectGrid extends Component {
         </Grid>
 
         <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Banner title={"Activites"}/>
-        </Paper>
-      </Grid>
-
-      {this.state.activities.map((data) => {
-           return <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}><MiniActivity activity = {data}/></Paper>
-        </Grid>
-          })}
-                  <Grid  item xs={12} sm={6}>
-          <Paper className={classes.paper}><AddActivity /></Paper>
+          <Paper className={classes.paper}>
+          <TextField
+          id="standard-number"
+          label="Points"
+          defaultValue={this.state.points}
+          onChange={this.handleChangePoints}
+          type="number"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+        />
+          </Paper>
         </Grid>
 
         <Grid item xs={12}>
@@ -138,7 +139,7 @@ class ProjectGrid extends Component {
   }
 }
 
-ProjectGrid.propTypes = {
+ActivityGrid.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -216,6 +217,6 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(ProjectGrid);
+export default withStyles(styles)(ActivityGrid);
 
 

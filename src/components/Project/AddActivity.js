@@ -24,7 +24,8 @@ export default class AddActivity extends Component {
                   startDate: new Date(),
                   endDate: new Date(),
                   description: "",
-                  activities: []
+                  activities: [],
+                  points: 0,
                 }
                 }}> {this.state.name} </NavLink>
       </div>

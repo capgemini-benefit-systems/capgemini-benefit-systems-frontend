@@ -7,7 +7,8 @@ export const userService = {
     saveNewProject,
     addUserToProject,
     getAllProjects,
-    getProjectsForUser
+    getProjectsForUser,
+    saveNewActivity
 };
 
 const config= {
@@ -83,8 +84,6 @@ function saveNewProject(name, description, startDate, endDate, img, maxUsers) {
         });
 }
 
-
-
 function addUserToProject(projectId) {
     const requestOptions = {
         method: 'GET',
@@ -130,6 +129,43 @@ function getProjectsForUser() {
     };
     const userId = 1
     return fetch(`${config.apiUrl}/api/user/`+userId+`/projects`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
+function saveNewActivity(name, description, startDate, endDate, img, maxUsers, points) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img, "maxUsers":parseInt(maxUsers), "actualUsers":0,"points":parseInt(points)})
+    };
+
+    return fetch(`${config.apiUrl}/api/activity/add`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
+function addUserToActivity(activityId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    const userId = 1
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/addToActivity/`+activityId, requestOptions)
         .then(handleResponse)
         .then(response => {
             if (response) {

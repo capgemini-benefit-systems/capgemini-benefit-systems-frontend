@@ -59,7 +59,7 @@ export default class Project extends Component {
         {console.log(this.state)}
         <div style={container}> 
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
-          <div style={namePositionStyle}><ProjectNameTextField name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
+          <div style={namePositionStyle}><ProjectNameTextField label={"Project Name"} name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
         </div>
         <ProjectGrid state={this.state} projectProps={this.state} callbackParent={(newState) => this.onChildSaveClicked(newState)} />
       </div>

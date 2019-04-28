@@ -46,7 +46,7 @@ class ProjectNameTextField extends React.Component {
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
           id="standard-uncontrolled"
-          label="Project Name"
+          label={this.props.label}
           defaultValue={this.state.name}
           className={classes.textField}
           margin="normal"
