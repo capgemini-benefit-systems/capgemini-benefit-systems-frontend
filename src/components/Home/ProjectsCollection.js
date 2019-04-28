@@ -1,41 +1,38 @@
 import React, { Component } from 'react'
-import MiniProject from './MiniProject';
 import ProGrid from './ProGrid';
+import {userService} from '../../service/user.service';
 
 export default class ProjectsCollection extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      projects: []
+      projects: [],
+      myProjects: [],
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/api/project/all',{
-      method: 'get',
-    dataType: 'json',
-    headers: {
-       'Accept': 'application/json',
-       'Content-Type': 'application/json'
-    }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        } 
-      })
-      .then(data =>{
-        this.setState({ projects:data })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    userService.getAllProjects()
+          .then(data => {
+           this.setState({ projects:data })
+            },
+            error => console.log(error) //this.setState({ error, loading: false })
+          );
+
+          userService.getProjectsForUser()
+          .then(data => {
+           this.setState({ myProjects:data })
+            },
+            error => console.log(error) //this.setState({ error, loading: false })
+          );
   }
   render() {
     return (
       <div>
-          <ProGrid projects={this.state.projects} />
+        {console.log('AAAAAAAAA')}
+        {console.log(this.state)}
+          <ProGrid projects={this.state} />
       </div>
     )
   }

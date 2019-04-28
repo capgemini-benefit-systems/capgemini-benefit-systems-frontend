@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { NavLink } from 'react-router-dom';
 import Dotdotdot from 'react-dotdotdot';
+import Project from '../Project/Project';
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -33,7 +35,7 @@ const styles = theme => ({
 
 function ComplexGrid(props) {
   const { classes } = props;
-  const project  = props.props
+  const project  = props.project
   return (
     <div className={classes.root}>
       <Grid item md
@@ -43,16 +45,55 @@ function ComplexGrid(props) {
       >
         <Grid item xs>
             <div style ={photoStyle}>
-              <NavLink style={naviStyle} exact to="/project"><img width="100%" height="100%" src ="http://localhost:8080/api/project/photo"/></NavLink>
+              <Link style={naviStyle}  to={{
+                pathname: "/project",
+                state: {
+                  isEditMode: false,
+                  title: project.name,
+                  img: project.img,
+                  startDate: project.startDate,
+                  endDate: project.endDate,
+                  description: project.description,
+                  maxUsers: project.maxUsers,
+                  activities: [],
+                  id: project.id
+                }
+            }}><img width="100%" height="100%" src ="http://localhost:8080/api/project/1/photo"/></Link>
             </div>
         </Grid>
         
         <Grid item xs>
-            <NavLink style={naviStyle} exact to="/project"><Typography variant="h4">{project.name}</Typography></NavLink>
+            <Link style={naviStyle}  to={{
+                pathname: "/project",
+                state: {
+                  isEditMode: false,
+                  title: project.name,
+                  img: project.img,
+                  startDate: project.startDate,
+                  endDate: project.endDate,
+                  description: project.description,
+                  maxUsers: project.maxUsers,
+                  activities: [],
+                  id: project.id
+                }
+                }}><Typography variant="h4">{project.name}</Typography></Link>
         </Grid>
         <Grid item xs >
           <Typography variant="h5" >Liczba Miejsc: {project.actualUsers}/{project.maxUsers}</Typography>
-          <NavLink style={naviStyle} exact to="/project"></NavLink>
+          <Link style={naviStyle} to={{
+                pathname: "/project",
+                state: {
+                  isEditMode: false,
+                  title: project.name,
+                  img: project.img,
+                  startDate: project.startDate,
+                  endDate: project.endDate,
+                  description: project.description,
+                  maxUsers: project.maxUsers,
+                  activities: [],
+                  id: project.id
+                }
+                }}>></Link>
         </Grid>
         <Grid item  xs>
             <Dotdotdot clamp={3}>
@@ -60,7 +101,20 @@ function ComplexGrid(props) {
               {project.description}
             </Typography>
             </Dotdotdot>
-            <NavLink style={naviStyle} exact to="/project"></NavLink>
+            <NavLink style={naviStyle} to={{
+                pathname: "/project",
+                state: {
+                  isEditMode: false,
+                  title: project.name,
+                  img: project.img,
+                  startDate: project.startDate,
+                  endDate: project.endDate,
+                  description: project.description,
+                  maxUsers: project.maxUsers,
+                  activities: [],
+                  id: project.id
+                }
+                }}></NavLink>
         </Grid>
       </Grid>
  

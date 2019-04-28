@@ -28,7 +28,7 @@ const styles = theme => ({
  
 class ProjectNameTextField extends React.Component {
   state = {
-    name: '',
+    name: this.props.name,
   };
 
   handleChange = event => {
@@ -42,11 +42,12 @@ class ProjectNameTextField extends React.Component {
     const { classes } = this.props;
  
     return (
+      
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
           id="standard-uncontrolled"
           label="Project Name"
-          defaultValue=""
+          defaultValue={this.state.name}
           className={classes.textField}
           margin="normal"
           onChange={this.handleChange}

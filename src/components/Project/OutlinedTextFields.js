@@ -24,7 +24,7 @@ const styles = theme => ({
 
 class OutlinedTextFields extends React.Component {
   state = {
-    description: '',
+    description: this.props.description,
   };
 
   handleChange = event => {
@@ -49,6 +49,7 @@ class OutlinedTextFields extends React.Component {
           margin="normal"
           variant="outlined"
           onChange={this.handleChange}
+          defaultValue={this.state.description}
         />
     );
   }

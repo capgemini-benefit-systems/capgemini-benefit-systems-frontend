@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default class AddProject extends Component {
+export default class AddActivity extends Component {
 
     constructor(props) {
         super(props);
     
         this.state = {
-          name: "Add Project",
+          name: "Add Activity",
         };
       }
 
@@ -16,7 +16,7 @@ export default class AddProject extends Component {
       <header style = {addProjectStyle}> 
       <div>
       <NavLink style={projectStyle} to={{
-                pathname: "/new_project",
+                pathname: "/new_activity",
                 state: {
                   isEditMode: true,
                   title: "",

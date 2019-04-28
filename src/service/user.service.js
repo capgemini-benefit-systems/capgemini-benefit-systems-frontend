@@ -3,9 +3,11 @@
 export const userService = {
     login,
     logout,
-    // getAll,
     register,
-    saveNewProject
+    saveNewProject,
+    addUserToProject,
+    getAllProjects,
+    getProjectsForUser
 };
 
 const config= {
@@ -74,19 +76,68 @@ function saveNewProject(name, description, startDate, endDate, img, maxUsers) {
     return fetch(`${config.apiUrl}/api/project/add`, requestOptions)
         .then(handleResponse)
         .then(response => {
-            // login successful if there's a user in the response
             if (response) {
-                // store user details and basic auth credentials in local storage 
-                // to keep user logged in between page refreshes
                 console.log(response);
-                //user.authdata = window.btoa(user);
-                //localStorage.setItem('user', JSON.stringify(user));
             }
-
             return response;
         });
 }
 
+
+
+function addUserToProject(projectId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    const userId = 1
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/addToProject/`+projectId, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
+function getAllProjects() {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+
+    return fetch(`${config.apiUrl}/api/project/all`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
+function getProjectsForUser() {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    const userId = 1
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/projects`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
 
 function logout() {
     // remove user from local storage to log user out

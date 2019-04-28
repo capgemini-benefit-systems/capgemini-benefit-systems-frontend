@@ -10,20 +10,36 @@ import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react'
 import Project from './Project';
 import Datepick from './Datepick';
-import { NavLink } from 'react-router-dom'
 import { Button} from "react-bootstrap";
+import MiniProject from '../Home/MiniProject';
+import AddActivity from './AddActivity';
 
 class ProjectGrid extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      startDate: new Date(),
-      endDate: new Date(),
-      description: "",
-      activities: [],
-      maxUsers: 0,
-    };
+
+    if(props.state.isEditMode) {
+      this.state = {
+        startDate: new Date(),
+        endDate: new Date(),
+        description: "",
+        activities: [],
+        maxUsers: 0,
+        submit: "Save"
+      };
+      
+    } else {
+      this.state = {
+        isEditMode: props.state.isEditMode,
+        startDate: props.state.startDate,
+        endDate: props.state.endDate,
+        description: props.state.description,
+        activities: props.state.activities,
+        maxUsers: props.state.maxUsers,
+        submit: "Join"
+      };
+    }
   }
 
    onChildDescriptionChanged(newState) {
@@ -51,26 +67,18 @@ class ProjectGrid extends Component {
    render() {
     const { classes } = this.props;
     return (
-
       <div className={classes.root}>
+      {console.log(this.state)}
         <Grid container className={classes.cont} spacing ={32}>
         <Grid item xs={12}>      
          {/* <Paper className={classes.paper}>*/ }
-
-        <Datepick label={"Start Date"} callbackParent={(newState) => this.onChildStartDateChanged(newState) }/>
-        <Datepick label={"End Date"} callbackParent={(newState) => this.onChildEndDateChanged(newState) }/>
+        <Datepick date={this.state.startDate} label={"Start Date"} callbackParent={(newState) => this.onChildStartDateChanged(newState) }/>
+        <Datepick date={this.state.endDate} label={"End Date"} callbackParent={(newState) => this.onChildEndDateChanged(newState) }/>
                  
-        </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-          <NavLink style={projectStyle} exact to="/new_project">
-            <Banner title={'Sign up'}/>
-          </NavLink>
-          </Paper>
         </Grid>
   
         <Grid item xs={12} className={classes.descritpion}>
-        <OutlinedTextField callbackParent={(newState) => this.onChildDescriptionChanged(newState) } />
+        <OutlinedTextField description={this.state.description} callbackParent={(newState) => this.onChildDescriptionChanged(newState) } />
         </Grid>
   
         <Grid item xs={12}>
@@ -78,7 +86,7 @@ class ProjectGrid extends Component {
           <TextField
           id="standard-number"
           label="Max users"
-          value={this.state.age}
+          defaultValue={this.state.maxUsers}
           onChange={this.handleChangeMaxUsers}
           type="number"
           className={classes.textField}
@@ -91,6 +99,21 @@ class ProjectGrid extends Component {
         </Grid>
 
         <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <Banner title={"Activites"}/>
+        </Paper>
+      </Grid>
+
+      {this.state.activities.map((data) => {
+           return <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}><MiniProject project = {data}/></Paper>
+        </Grid>
+          })}
+                  <Grid  item xs={12} sm={6}>
+          <Paper className={classes.paper}><AddActivity/></Paper>
+        </Grid>
+
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
           <Button style={saveStyle}
                 block
@@ -98,19 +121,10 @@ class ProjectGrid extends Component {
                 type="submit"
                 onClick = {this.handleSave}
               >
-                Save
+                {this.state.submit}
               </Button>
           </Paper>
         </Grid>
-        
-        {/* {projects.map((data) => {
-             return <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
-          </Grid>
-            })}
-          <Grid  item xs={12} sm={6}>
-            <Paper className={classes.paper}><AddProject/></Paper>
-          </Grid> */}
         </Grid>
       </div>
     );

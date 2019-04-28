@@ -9,12 +9,15 @@ export default class Project extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          title: "",
-          img: "img/defaultImage.jpg",
-          startDate: "",
-          endDate: "",
-          description: "",
-          activities: []
+          isEditMode: props.location.state.isEditMode,
+          title: props.location.state.title,
+          img: props.location.state.img,
+          startDate: props.location.state.startDate,
+          endDate: props.location.state.endDate,
+          description: props.location.state.description,
+          activities: props.location.state.activities,
+          maxUsers: props.location.state.maxUsers,
+          id: props.location.state.id
         };
         this.onChildSaveClicked = this.onChildSaveClicked.bind(this)
       }
@@ -24,37 +27,41 @@ export default class Project extends Component {
       };
 
       onChildSaveClicked(newState) {
-        // this.state.description = newState.description
-        // this.state.startDate = newState.startDate
-        // this.state.endDate = newState.endDate
         this.setState({
            description: newState.description,
            startDate: newState.startDate,
            endDate: newState.endDate,
            maxUsers: newState.maxUsers,
          })
-         console.log(this.state.title)
-         console.log(newState.description)
-         userService.saveNewProject(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img, newState.maxUsers)
-        .then(result => {
-          console.log(result)
-         this.props.history.push(`/`);
-          },
-          error => console.log(error) //this.setState({ error, loading: false })
-        );
+
+         if(this.state.isEditMode) {
+          userService.saveNewProject(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img, newState.maxUsers)
+          .then(result => {
+            console.log(result)
+           this.props.history.push(`/`);
+            },
+            error => console.log(error) //this.setState({ error, loading: false })
+          );
+         } else {
+          userService.addUserToProject(this.state.id)
+          .then(result => {
+            console.log(result)
+           this.props.history.push(`/`);
+            },
+            error => console.log(error) //this.setState({ error, loading: false })
+          );
+         }
       }
 
   render() {
     return (
       <div>          
+        {console.log(this.state)}
         <div style={container}> 
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
-          <div style={namePositionStyle}><ProjectNameTextField callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
+          <div style={namePositionStyle}><ProjectNameTextField name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
         </div>
-      
-        <ProjectGrid callbackParent={(newState) => this.onChildSaveClicked(newState)} />
-        
-
+        <ProjectGrid state={this.state} projectProps={this.state} callbackParent={(newState) => this.onChildSaveClicked(newState)} />
       </div>
     )
   }

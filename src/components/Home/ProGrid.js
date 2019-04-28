@@ -39,19 +39,33 @@ const styles = theme => ({
 
 function CenteredGrid(props) {
   const { classes } = props;
-  const projects = props.projects;
+  const projects = props.projects.projects;
+  const myProjects = props.projects.myProjects;
   return (
+    
     <div className={classes.root}>
       <Grid container className={classes.cont} spacing ={32}>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <Banner title={"Wszystkie Projekty"}/>
+          <Banner title={"My Projects"}/>
+        </Paper>
+      </Grid>
+
+      {myProjects.map((data) => {
+           return <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}><MiniProject project = {data}/></Paper>
+        </Grid>
+          })}
+
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <Banner title={"All Projects"}/>
         </Paper>
       </Grid>
       
       {projects.map((data) => {
            return <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}><MiniProject props = {data}/></Paper>
+          <Paper className={classes.paper}><MiniProject project = {data}/></Paper>
         </Grid>
           })}
         <Grid  item xs={12} sm={6}>
