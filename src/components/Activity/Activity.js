@@ -20,7 +20,8 @@ export default class Activity extends Component {
           activities: props.location.state.activities,
           maxUsers: props.location.state.maxUsers,
           id: props.location.state.id,
-          points: props.location.state.points
+          points: props.location.state.points,
+          projectId: props.location.state.projectId,
         };
         this.onChildSaveClicked = this.onChildSaveClicked.bind(this)
       }
@@ -30,30 +31,30 @@ export default class Activity extends Component {
       };
 
       onChildSaveClicked(newState) {
-
         this.setState(()=> ({
           description: newState.description,
           startDate: newState.startDate,
           endDate: newState.endDate,
           maxUsers: newState.maxUsers,
         }))
-        //  if(this.state.isEditMode) {
-        //   userService.saveNewActivity(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img, newState.maxUsers, newState.points)
-        //   .then(result => {
-        //     console.log(result)
-        //   //  this.props.history.push(`/`);
-        //     },
-        //     error => console.log(error) //this.setState({ error, loading: false })
-        //   );
-        //  } else {
-        //   userService.addUserToProject(this.state.id)
-        //   .then(result => {
-        //     console.log(result)
-        //    this.props.history.push(`/`);
-        //     },
-        //     error => console.log(error) //this.setState({ error, loading: false })
-        //   );
-        //  }
+
+         if(this.state.isEditMode) {
+          userService.saveNewActivity(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img, newState.maxUsers, newState.points, this.state.projectId)
+          .then(result => {
+            console.log(result)
+          //  this.props.history.push(`/`);
+            },
+            error => console.log(error) //this.setState({ error, loading: false })
+          );
+         } else {
+          userService.addUserToProject(this.state.id)
+          .then(result => {
+            console.log(result)
+           this.props.history.push(`/`);
+            },
+            error => console.log(error) //this.setState({ error, loading: false })
+          );
+         }
       }
 
   render() {

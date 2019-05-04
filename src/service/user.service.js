@@ -1,3 +1,5 @@
+import { Alert } from "react-bootstrap";
+
 // import { authHeader } from '../helpers/auth-header';
 
 export const userService = {
@@ -8,57 +10,58 @@ export const userService = {
     addUserToProject,
     getAllProjects,
     getProjectsForUser,
-    saveNewActivity
+    saveNewActivity,
+    getUser,
 };
 
 const config= {
     apiUrl: 'http://localhost:8080'
 }
 
-function login(username, password) {
+function login(login, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
-        "Authorization": "Basic QWRtaW46MTIzNDU=",
         "cache-control": "no-cache",},
         "processData": false,
-        body: JSON.stringify({ username, password }),
-        data: JSON.stringify({ username, password })
-        
+        body: JSON.stringify({ login, password }),
     };
 
-    return fetch(`${config.apiUrl}/login`, requestOptions)
+    return fetch(`${config.apiUrl}/api/account/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            // login successful if there's a user in the response
+            console.log("EEEEEEEEE")
+            console.log(user)
             if (user) {
-                // store user details and basic auth credentials in local storage 
-                // to keep user logged in between page refreshes
-                user.authdata = window.btoa(username + ':' + password);
+                if(user.accountId == -1) {
+                    return
+                }
+                user.authdata = window.btoa(login + ':' + password);
                 localStorage.setItem('user', JSON.stringify(user));
             }
-
             return user;
         });
 }
 
-function register(username, password) {
+function register(login, password, email, name, surname, role) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({
+            "email": email,
+            "login": login,
+            "name": name,
+            "password": password,
+            "role": role,
+            "surname": surname
+           })
     };
-
-    //return fetch(`${config.apiUrl}/users/registration`, requestOptions)
-    return fetch(`${config.apiUrl}/user/register`, requestOptions)
+    return fetch(`${config.apiUrl}/api/account/register`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            // login successful if there's a user in the response
             if (user) {
-                // store user details and basic auth credentials in local storage 
-                // to keep user logged in between page refreshes
                 console.log("Register succesful");
-                user.authdata = window.btoa(username + ':' + password);
+                user.authdata = window.btoa(login + ':' + password);
                 localStorage.setItem('user', JSON.stringify(user));
             }
             return user;
@@ -77,27 +80,20 @@ function saveNewProject(name, description, startDate, endDate, img, maxUsers) {
     return fetch(`${config.apiUrl}/api/project/add`, requestOptions)
         .then(handleResponse)
         .then(response => {
-            if (response) {
-                console.log(response);
-            }
             return response;
         });
 }
 
-function addUserToProject(projectId) {
+function addUserToProject(projectId, userId) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json',
         "cache-control": "no-cache",},
         "processData": false,
     };
-    const userId = 1
     return fetch(`${config.apiUrl}/api/user/`+userId+`/addToProject/`+projectId, requestOptions)
         .then(handleResponse)
         .then(response => {
-            if (response) {
-                console.log(response);
-            }
             return response;
         });
 }
@@ -113,21 +109,17 @@ function getAllProjects() {
     return fetch(`${config.apiUrl}/api/project/all`, requestOptions)
         .then(handleResponse)
         .then(response => {
-            if (response) {
-                console.log(response);
-            }
             return response;
         });
 }
 
-function getProjectsForUser() {
+function getProjectsForUser(userId) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json',
         "cache-control": "no-cache",},
         "processData": false,
     };
-    const userId = 1
     return fetch(`${config.apiUrl}/api/user/`+userId+`/projects`, requestOptions)
         .then(handleResponse)
         .then(response => {
@@ -138,19 +130,19 @@ function getProjectsForUser() {
         });
 }
 
-function saveNewActivity(name, description, startDate, endDate, img, maxUsers, points) {
+function saveNewActivity(name, description, startDate, endDate, img, maxUsers, points, projectId) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
         "cache-control": "no-cache",},
         "processData": false,
-        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img, "maxUsers":parseInt(maxUsers), "actualUsers":0,"points":parseInt(points)})
+        body: JSON.stringify({"name":name, "description":description, "startingDate":startDate, "finishDate":endDate, "photo":img, "maxUsers":parseInt(maxUsers), "actualUsers":0,"projectId":projectId ,"points":parseInt(points), "type":"temporary", "id":"40"})
     };
-
     return fetch(`${config.apiUrl}/api/activity/add`, requestOptions)
         .then(handleResponse)
         .then(response => {
             if (response) {
+                console.log("FFFFFFFFFF")
                 console.log(response);
             }
             return response;
@@ -175,19 +167,27 @@ function addUserToActivity(activityId) {
         });
 }
 
-function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+function getUser(userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false
+    };
+
+    return fetch(`${config.apiUrl}/api/user/`+userId, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
 }
 
-// function getAll() {
-//     const requestOptions = {
-//         method: 'GET',
-//         headers: authHeader()
-//     };
-
-//     return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
-// }
+function logout() {
+    localStorage.removeItem('user');
+}
 
 function handleResponse(response) {
     console.log('handling response');
@@ -195,7 +195,6 @@ function handleResponse(response) {
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
-                // auto logout if 401 response returned from api
                 logout();
                 window.location.reload(true);
             }

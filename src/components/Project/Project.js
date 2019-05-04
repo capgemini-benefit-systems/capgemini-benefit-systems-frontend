@@ -4,6 +4,7 @@ import ProjectGrid from './ProjectGrid';
 import Top5Users from '../Home/Top5Users';
 import ProjectNameTextField from './ProjectNameTextField';
 import {userService} from '../../service/user.service';
+import App from '../../App'
 
 export default class Project extends Component {
     constructor(props) {
@@ -43,7 +44,12 @@ export default class Project extends Component {
             error => console.log(error) //this.setState({ error, loading: false })
           );
          } else {
-          userService.addUserToProject(this.state.id)
+          if(localStorage.getItem('user') == null) {
+            return
+        }
+        let user = JSON.parse(localStorage.getItem('user'))
+        let userId = parseInt(user.accountId) + 1
+          userService.addUserToProject(this.state.id,userId)
           .then(result => {
             console.log(result)
            this.props.history.push(`/`);

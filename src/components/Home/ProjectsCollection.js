@@ -19,19 +19,21 @@ export default class ProjectsCollection extends Component {
             },
             error => console.log(error) //this.setState({ error, loading: false })
           );
-
-          userService.getProjectsForUser()
-          .then(data => {
-           this.setState({ myProjects:data })
-            },
-            error => console.log(error) //this.setState({ error, loading: false })
-          );
+    if(localStorage.getItem('user') == null) {
+        return
+    }
+    let user = JSON.parse(localStorage.getItem('user'))
+    let userId = parseInt(user.accountId) + 1
+    userService.getProjectsForUser(userId)
+    .then(data => {
+      this.setState({ myProjects:data })
+      },
+      error => console.log(error) //this.setState({ error, loading: false })
+    );
   }
   render() {
     return (
       <div>
-        {console.log('AAAAAAAAA')}
-        {console.log(this.state)}
           <ProGrid projects={this.state} />
       </div>
     )

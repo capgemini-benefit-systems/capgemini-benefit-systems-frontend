@@ -58,7 +58,7 @@ function ComplexGrid(props) {
                   activities: [],
                   id: project.id
                 }
-            }}><img width="100%" height="100%" src ="http://localhost:8080/api/project/1/photo"/></Link>
+            }}><img width="100%" height="100%" src ="http://localhost:8080/api/project/4/photo"/></Link>
             </div>
         </Grid>
         

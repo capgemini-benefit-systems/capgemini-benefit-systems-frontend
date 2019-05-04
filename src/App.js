@@ -5,18 +5,23 @@ import Home from './components/Home/Home'
 import Profile from './components/Profile';
 import Project from './components/Project/Project';
 import Activity from './components/Activity/Activity';
+import { PrivateRoute } from './components/Authorization/PrivateRoute';
+import Login from './components/Authorization/Login';
+import Register from './components/Authorization/Register';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
       <Header/>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/project" component={Project} />
-      <Route exact path="/new_project" component={Project} />
-      <Route exact path="/activity" component={Activity} />
-      <Route exact path="/new_activity" component={Activity}/>
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
+      <PrivateRoute exact path="/" component={Home} />
+      <PrivateRoute exact path="/home" component={Home} />
+      <PrivateRoute exact path="/project" component={Project} />
+      <PrivateRoute exact path="/new_project" component={Project} />
+      <PrivateRoute exact path="/activity" component={Activity} />
+      <PrivateRoute exact path="/new_activity" component={Activity}/>
       </div>
     );
   }

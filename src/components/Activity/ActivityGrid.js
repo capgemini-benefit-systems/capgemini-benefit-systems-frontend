@@ -65,8 +65,6 @@ class ActivityGrid extends Component {
 
   handleSave = event => {
     event.preventDefault();
-    console.log(this.state.maxUsers)
-
     this.props.callbackParent(this.state);
   }
 

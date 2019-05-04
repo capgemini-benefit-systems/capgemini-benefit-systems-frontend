@@ -38,7 +38,8 @@ class ProjectGrid extends Component {
         description: props.state.description,
         activities: props.state.activities,
         maxUsers: props.state.maxUsers,
-        submit: "Join"
+        submit: "Join",
+        id: props.state.id
       };
     }
   }
@@ -61,7 +62,6 @@ class ProjectGrid extends Component {
 
   handleSave = event => {
     event.preventDefault();
-    console.log(this.state.maxUsers)
     this.props.callbackParent(this.state);
   }
 
@@ -75,7 +75,6 @@ class ProjectGrid extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-      {console.log(this.state)}
         <Grid container className={classes.cont} spacing ={32}>
         <Grid item xs={12}>      
          {/* <Paper className={classes.paper}>*/ }
@@ -117,7 +116,7 @@ class ProjectGrid extends Component {
         </Grid>
           })}
                   <Grid  item xs={12} sm={6}>
-          <Paper className={classes.paper}><AddActivity /></Paper>
+          <Paper className={classes.paper}><AddActivity projectId = {this.state.id} /></Paper>
         </Grid>
 
         <Grid item xs={12}>

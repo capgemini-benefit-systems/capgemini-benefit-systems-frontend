@@ -1,0 +1,32 @@
+@media all and (min-width: 640px) {
+    .Register {
+        padding: 5rem 0;
+        position: absolute; 
+        background-color: white;
+        left: 40rem; 
+        right: 40rem; 
+        top: 10rem;
+        bottom: 40rem;
+
+        border:'#979799';
+        border-style: solid;
+        border-width: 1px;
+
+        margin-left: auto; 
+        margin-right: auto; 
+
+        width: 40rem;
+        height: 70rem;
+        text-align: center;
+        font-weight: bold;
+    }
+  
+    .Register form {
+      margin: 0 auto;
+      max-width: 30rem;
+    }
+
+    .Register h3 {
+        padding-bottom: 5rem;
+    }
+  }

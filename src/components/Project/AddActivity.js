@@ -26,6 +26,7 @@ export default class AddActivity extends Component {
                   description: "",
                   activities: [],
                   points: 0,
+                  projectId:this.props.projectId,
                 }
                 }}> {this.state.name} </NavLink>
       </div>
