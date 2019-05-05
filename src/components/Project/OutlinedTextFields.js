@@ -43,7 +43,7 @@ class OutlinedTextFields extends React.Component {
           id="outlined-multiline-static"
           label="Add Description"
           multiline
-          rows="22"
+          rows="36"
           placeHolder="Add Description"
           className={classes.textField}
           margin="normal"

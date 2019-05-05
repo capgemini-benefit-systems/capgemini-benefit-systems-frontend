@@ -80,6 +80,18 @@ class ProjectGrid extends Component {
          {/* <Paper className={classes.paper}>*/ }
         <Datepick date={this.state.startDate} label={"Start Date"} callbackParent={(newState) => this.onChildStartDateChanged(newState) }/>
         <Datepick date={this.state.endDate} label={"End Date"} callbackParent={(newState) => this.onChildEndDateChanged(newState) }/>
+        <TextField style={maxusersStyle}
+          id="standard-number"
+          label="Max users"
+          defaultValue={this.state.maxUsers}
+          onChange={this.handleChangeMaxUsers}
+          type="number"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+        />
                  
         </Grid>
   
@@ -87,7 +99,7 @@ class ProjectGrid extends Component {
         <OutlinedTextField description={this.state.description} callbackParent={(newState) => this.onChildDescriptionChanged(newState) } />
         </Grid>
   
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Paper className={classes.paper}>
           <TextField
           id="standard-number"
@@ -102,7 +114,7 @@ class ProjectGrid extends Component {
           margin="normal"
         />
           </Paper>
-        </Grid>
+        </Grid> */}
 
         <Grid item xs={12}>
         <Paper className={classes.paper}>
@@ -156,6 +168,10 @@ const projectStyle = {
   color: '#000',
 }
 
+const maxusersStyle = {
+  marginLeft: '9.5%',
+};
+
 const saveStyle = {
   background: '#FFFFFF', //#fff
   textAlign: 'center',
@@ -174,7 +190,7 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     width: '100%',
     height: '100%',
-    marginLeft:'0%',
+    marginLeft:'0.9%',
     backgroundColor: '#fafafa',
     borderColor: '#fafafa',
   },
