@@ -170,7 +170,7 @@ const projectStyle = {
 
 const maxusersStyle = {
   marginLeft: '9.5%',
-};
+}
 
 const saveStyle = {
   background: '#FFFFFF', //#fff
