@@ -36,7 +36,7 @@ export default class AddProject extends Component {
 const addProjectStyle = {
     background: '',//'#6a6a6a'
     textAlign: 'center',
-    padding:'38% 0% 38% 0%',
+    padding:'20% 0% 20% 0%',
     fontSize: '3rem',
     height:'100%',
     width:'100%',
