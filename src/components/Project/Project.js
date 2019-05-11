@@ -23,6 +23,20 @@ export default class Project extends Component {
         this.onChildSaveClicked = this.onChildSaveClicked.bind(this)
       }
 
+      componentDidMount() {
+      console.log("AAAAAAAAAAa")
+      console.log(this.state.id)
+      userService.getActivitiesForProject(this.state.id)
+      .then(
+        projectActivities => {
+          console.log(projectActivities)
+          this.setState({
+            activities: projectActivities,
+          })
+        }
+      )
+      }
+
       onChildNameChanged(newState) {
         this.setState({ title: newState })
       };

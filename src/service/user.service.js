@@ -12,6 +12,7 @@ export const userService = {
     getProjectsForUser,
     saveNewActivity,
     getUser,
+    getActivitiesForProject,
 };
 
 const config= {
@@ -158,6 +159,23 @@ function addUserToActivity(activityId) {
     };
     const userId = 1
     return fetch(`${config.apiUrl}/api/user/`+userId+`/addToActivity/`+activityId, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
+function getActivitiesForProject(projectId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    return fetch(`${config.apiUrl}/api/activity/`+projectId+`/activities`, requestOptions)
         .then(handleResponse)
         .then(response => {
             if (response) {
