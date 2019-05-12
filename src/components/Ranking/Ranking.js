@@ -18,14 +18,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
-let counter = 1;
+let counter = 0;
 function createData(rank, name, surname, points) {
   counter += 1;
   return { id: counter, rank, name, surname, points };
 }
 
   function createRows(users) {
-    var i = 0;
+    var i = 1;
     return users.map(user => createData(i++, user.name, user.surname, user.pointsSum))
   }
 
@@ -209,7 +209,7 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
   state = {
     order: 'asc',
-    orderBy: 'name',
+    orderBy: 'rank',
     selected: [],
     data: [
       // createData(1, "Grzegorz", "Tomasik", 2500),

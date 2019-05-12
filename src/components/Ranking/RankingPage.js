@@ -15,7 +15,9 @@ export default class RankingPage extends Component {
   componentDidMount() {
     userService.getAllUsers()
           .then(data => {
-          console.log(data)
+          data.sort((a,b) => (a.pointsSum - b.pointsSum));
+          data.reverse();
+          console.log(data);
            this.setState({ users:data })
           }
     )
