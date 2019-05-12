@@ -8,10 +8,8 @@ import Banner from '../Home/Banner';
 import OutlinedTextField from './OutlinedTextFields';
 import TextField from '@material-ui/core/TextField';
 import React, { Component } from 'react'
-import Project from './Project';
 import Datepick from './Datepick';
 import { Button} from "react-bootstrap";
-import MiniProject from '../Home/MiniProject';
 import AddActivity from './AddActivity';
 import MiniActivity from '../Activity/MiniActivity';
 
