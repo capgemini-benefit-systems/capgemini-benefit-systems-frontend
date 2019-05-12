@@ -54,16 +54,13 @@ function getSorting(order, orderBy) {
 }
 
 const rows = [
-  { id: 'rank', numeric: false, disablePadding: true, label: 'Number of the user' },
+  { id: 'rank', numeric: false, disablePadding: true, label: 'Rank' },
   { id: 'name', numeric: true, disablePadding: false, label: 'Name' },
   { id: 'surname', numeric: true, disablePadding: false, label: 'Surname' },
   { id: 'points', numeric: true, disablePadding: false, label: 'Points' },
 ];
 const textStyle = {
-  background: '#FFFFFF', //#fff
-  textAlign: 'center',
   fontSize: '2rem',
-  padding:'1rem',
 }
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
@@ -85,7 +82,7 @@ class EnhancedTableHead extends React.Component {
           </TableCell> */}
           {rows.map(
             row => (
-              <TableCell
+              <TableCell style = {textStyle}
                 key={row.id}
                 align={row.numeric ? 'right' : 'left'}
                 padding={row.disablePadding ? 'none' : 'default'}
@@ -312,12 +309,12 @@ class EnhancedTable extends React.Component {
                       {/* <TableCell padding="checkbox">
                         <Checkbox checked={isSelected} />
                       </TableCell> */}
-                      <TableCell component="th" scope="row" padding="none">
+                      <TableCell style = {textStyle} component="th" scope="row" padding="none">
                         {n.rank}
                       </TableCell>
-                      <TableCell align="right">{n.name}</TableCell>
-                      <TableCell align="right">{n.surname}</TableCell>
-                      <TableCell align="right">{n.points}</TableCell>
+                      <TableCell style = {textStyle} align="right">{n.name}</TableCell>
+                      <TableCell style = {textStyle} align="right">{n.surname}</TableCell>
+                      <TableCell style = {textStyle} align="right">{n.points}</TableCell>
                     </TableRow>
                   );
                 })}
