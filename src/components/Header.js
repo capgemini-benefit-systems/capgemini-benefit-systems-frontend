@@ -49,6 +49,7 @@ export default class Header extends Component {
       <NavLink style={logoStyle} exact to="/home"> Benefit Systems </NavLink>
       <div  style={{float:'right'}} className="logo">
       <NavLink style={profileStyle} exact to="/profile"> {this.state.name + " " + this.state.surname} </NavLink>
+      <NavLink style={profileStyle} exact to="/ranking">Ranking </NavLink>
       {logout}
       </div>
       </header>
