@@ -24,6 +24,11 @@ function createData(rank, name, surname, points) {
   return { id: counter, rank, name, surname, points };
 }
 
+  function createRows(users) {
+    var i = 1;
+    return users.map(user => createData(i++, user.name, user.surname, user.pointsSum))
+  }
+
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -49,19 +54,21 @@ function getSorting(order, orderBy) {
 }
 
 const rows = [
-  { id: 'rank', numeric: false, disablePadding: true, label: 'Place in the ranking' },
+  { id: 'rank', numeric: false, disablePadding: true, label: 'Rank' },
   { id: 'name', numeric: true, disablePadding: false, label: 'Name' },
   { id: 'surname', numeric: true, disablePadding: false, label: 'Surname' },
   { id: 'points', numeric: true, disablePadding: false, label: 'Points' },
 ];
-
+const textStyle = {
+  fontSize: '2rem',
+}
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
   };
 
   render() {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
+    const { order, orderBy, numSelected, rowCount } = this.props;
 
     return (
       <TableHead>
@@ -75,7 +82,7 @@ class EnhancedTableHead extends React.Component {
           </TableCell> */}
           {rows.map(
             row => (
-              <TableCell
+              <TableCell style = {textStyle}
                 key={row.id}
                 align={row.numeric ? 'right' : 'left'}
                 padding={row.disablePadding ? 'none' : 'default'}
@@ -105,9 +112,7 @@ class EnhancedTableHead extends React.Component {
 }
 
 EnhancedTableHead.propTypes = {
-  numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -153,8 +158,8 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="h6" id="tableTitle">
-            Nutrition
+          <Typography variant="h4" id="tableTitle">
+            List of Users
           </Typography>
         )}
       </div>
@@ -201,16 +206,16 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
   state = {
     order: 'asc',
-    orderBy: 'name',
+    orderBy: 'rank',
     selected: [],
     data: [
-      createData(1, "Grzegorz", "Tomasik", 2500),
-      createData(2, "Kamil", "Tomasik", 2570),
-      createData(3, "Marcin", "Kot", 500),
-      createData(4, "Alek", "Pies", 250),
-      createData(5, "Alek", "Wrona", 2590),
-      createData(6, "Anna", "Baba", 1500),
-      createData(7, "Ola", "Jaga", 2100),
+      // createData(1, "Grzegorz", "Tomasik", 2500),
+     //  createData(2, "Kamil", "Tomasik", 2570),
+     //  createData(3, "Marcin", "Kot", 500),
+      // createData(4, "Alek", "Pies", 250),
+      // createData(5, "Alek", "Wrona", 2590),
+      // createData(6, "Anna", "Baba", 1500),
+      // createData(7, "Ola", "Jaga", 2100),
     ],
     page: 0,
     rowsPerPage: 5,
@@ -267,8 +272,10 @@ class EnhancedTable extends React.Component {
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   render() {
-    const { classes } = this.props;
-    const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+    const { classes, users } = this.props;
+    const  data  = createRows(users);
+    console.log(data)
+    const { order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
     return (
@@ -282,7 +289,7 @@ class EnhancedTable extends React.Component {
               orderBy={orderBy}
               //onSelectAllClick={this.handleSelectAllClick}
               onRequestSort={this.handleRequestSort}
-              rowCount={data.length}d
+              rowCount={data.length}
             />
             <TableBody>
               {stableSort(data, getSorting(order, orderBy))
@@ -302,12 +309,12 @@ class EnhancedTable extends React.Component {
                       {/* <TableCell padding="checkbox">
                         <Checkbox checked={isSelected} />
                       </TableCell> */}
-                      <TableCell component="th" scope="row" padding="none">
+                      <TableCell style = {textStyle} component="th" scope="row" padding="none">
                         {n.rank}
                       </TableCell>
-                      <TableCell align="right">{n.name}</TableCell>
-                      <TableCell align="right">{n.surname}</TableCell>
-                      <TableCell align="right">{n.points}</TableCell>
+                      <TableCell style = {textStyle} align="right">{n.name}</TableCell>
+                      <TableCell style = {textStyle} align="right">{n.surname}</TableCell>
+                      <TableCell style = {textStyle} align="right">{n.points}</TableCell>
                     </TableRow>
                   );
                 })}

@@ -9,6 +9,7 @@ export const userService = {
     saveNewProject,
     addUserToProject,
     getAllProjects,
+    getAllUsers,
     getProjectsForUser,
     saveNewActivity,
     getUser,
@@ -114,6 +115,25 @@ function getAllProjects() {
         });
 }
 
+function getAllUsers() {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    console.log("EEEEEEEEE")
+    return fetch(`${config.apiUrl}/api/user/all`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            console.log(response)
+            return response;            
+        })
+        .catch(error => {
+            console.error('Wypluj to powiedzialem:', error);
+          });
+}
+
 function getProjectsForUser(userId) {
     const requestOptions = {
         method: 'GET',
@@ -143,7 +163,6 @@ function saveNewActivity(name, description, startDate, endDate, img, maxUsers, p
         .then(handleResponse)
         .then(response => {
             if (response) {
-                console.log("FFFFFFFFFF")
                 console.log(response);
             }
             return response;

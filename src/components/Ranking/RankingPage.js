@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ranking from './Ranking';
+import {userService} from '../../service/user.service';
 
 
 export default class RankingPage extends Component {
@@ -10,33 +11,22 @@ export default class RankingPage extends Component {
       users: []
     };
   }
+
   componentDidMount() {
-    fetch('http://localhost:8080/api/user/all',{
-      method: 'get',
-    dataType: 'json',
-    headers: {
-       'Accept': 'application/json',
-       'Content-Type': 'application/json'
-    }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        } 
-      })
-      .then(data =>{
-        console.log(data)
-        this.setState({ users:data })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    userService.getAllUsers()
+          .then(data => {
+          data.sort((a,b) => (a.pointsSum - b.pointsSum));
+          data.reverse();
+          console.log(data);
+           this.setState({ users:data })
+          }
+    )
   }
-  
+
   render() {
     return (
       <div>
-          <Ranking />
+        <Ranking users={this.state.users}/>         
       </div>
     )
   }

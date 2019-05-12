@@ -15,7 +15,7 @@ export class Register extends Component {
       login: "",
       name: "",
       surname: "",
-      role: "",
+      role: "ADMINISTRATOR",
     };
   }
 
@@ -104,7 +104,10 @@ export class Register extends Component {
           />
         </FormGroup>
 
-        <DropdownButton id="dropdown-basic-button" title="Role">
+        <DropdownButton 
+        id="dropdown-basic-button"
+        title="Role"
+        disabled={true}>
             <Dropdown.Item onClick={this.adminRoleClicked}>Administrator</Dropdown.Item>
             <Dropdown.Item onClick={this.employeeRoleClicked}>Employee</Dropdown.Item>
         </DropdownButton>
