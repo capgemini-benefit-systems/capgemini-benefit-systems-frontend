@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 import Header from './components/Header';
 import Home from './components/Home/Home'
-import Profile from './components/Profile';
+import Profile from './components/Profile/Profile';
 import Project from './components/Project/Project';
 import Activity from './components/Activity/Activity';
 import { PrivateRoute } from './components/Authorization/PrivateRoute';
@@ -16,6 +16,7 @@ class App extends Component {
       <Header/>
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/profile" component={Profile} />
       <PrivateRoute exact path="/" component={Home} />
       <PrivateRoute exact path="/home" component={Home} />
       <PrivateRoute exact path="/project" component={Project} />
