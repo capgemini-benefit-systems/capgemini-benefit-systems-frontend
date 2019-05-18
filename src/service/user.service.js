@@ -15,6 +15,8 @@ export const userService = {
     getUser,
     getActivitiesForProject,
     addUserToActivity,
+    getUsersForActivity,
+    getUsersForProject,
 };
 
 const config= {
@@ -33,8 +35,6 @@ function login(login, password) {
     return fetch(`${config.apiUrl}/api/account/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            console.log("EEEEEEEEE")
-            console.log(user)
             if (user) {
                 if(user.accountId == -1) {
                     return
@@ -170,14 +170,13 @@ function saveNewActivity(name, description, startDate, endDate, img, maxUsers, p
         });
 }
 
-function addUserToActivity(activityId) {
+function addUserToActivity(activityId, userId) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json',
         "cache-control": "no-cache",},
         "processData": false,
     };
-    const userId = 1
     return fetch(`${config.apiUrl}/api/user/`+userId+`/addToActivity/`+activityId, requestOptions)
         .then(handleResponse)
         .then(response => {
@@ -203,6 +202,42 @@ function getActivitiesForProject(projectId) {
             }
             return response;
         });
+}
+
+function getUsersForProject(projectId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    console.log("VVVVVVVVv")
+    console.log(projectId)
+    return fetch(`${config.apiUrl}/api/project/`+projectId+`/users`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            return response;            
+        })
+        .catch(error => {
+            console.error(error);
+          });
+}
+
+function getUsersForActivity(activityId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    return fetch(`${config.apiUrl}/api/activity/`+activityId+`/users`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            return response;            
+        })
+        .catch(error => {
+            console.error(error);
+          });
 }
 
 function getUser(userId) {

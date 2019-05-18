@@ -42,6 +42,8 @@ function createData(place, img, name, points) {
 function createRows(props) {
   let rows = []
   var i = 1;
+  console.log("PPPPPP")
+  console.log(props.users)
   props.users.map(user => (
     rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
     ))
@@ -51,13 +53,20 @@ function createRows(props) {
 function CustomizedTable(props) {
   const { classes } = props;
   let rows = createRows(props)
+
+  var header = <TableRow >
+  <CustomTableCell align="center">Signed Users</CustomTableCell>
+  </TableRow>
+  if(props.isRanking == true) {
+    header = <TableRow >
+    <CustomTableCell align="center"><NavLink exact to="/ranking">Ranking </NavLink></CustomTableCell>
+    </TableRow>
+  }
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableBody>
-        <TableRow >
-              <CustomTableCell align="center"><NavLink exact to="/ranking">Ranking </NavLink></CustomTableCell>
-            </TableRow>
+        {header}
           {rows.map(row => (
             <TableRow className={classes.row} key={row.place}>
               <CustomTableCell align="left">{row.place}</CustomTableCell>

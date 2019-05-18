@@ -6,6 +6,7 @@ import ProjectNameTextField from '../Project/ProjectNameTextField';
 import {userService} from '../../service/user.service';
 import ActivityGrid from './ActivityGrid';
 import App from '../../App'
+import SignedUsersTable from '../SignedUsersTable';
 
 export default class Activity extends Component {
     constructor(props) {
@@ -47,7 +48,9 @@ export default class Activity extends Component {
             error => console.log(error) 
           );
          } else {
-          userService.addUserToActivity(this.state.id)
+          let user = JSON.parse(localStorage.getItem('user'))
+          let userId = parseInt(user.accountId) + 1
+          userService.addUserToActivity(this.state.id, userId)
           .then(result => {
             console.log(result)
             this.props.history.goBack();
@@ -60,11 +63,11 @@ export default class Activity extends Component {
   render() {
     return (
       <div>          
-        {console.log(this.state)}
         <div style={container}> 
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
           <div style={namePositionStyle}><ProjectNameTextField label={"Activity Name"} name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
         </div>
+        <SignedUsersTable activityId={this.state.id} isActivity={true}/>
         <ActivityGrid state={this.state} projectProps={this.state} callbackParent={(newState) => this.onChildSaveClicked(newState)} />
       </div>
     )

@@ -36,7 +36,7 @@ export default class Top5Users extends Component {
   render() {
     return (
       <div style={tableStyle}>
-        <CustomizedTable users={this.state.users}/>
+        <CustomizedTable isRanking={true} users={this.state.users}/>
       </div>
     )
   }

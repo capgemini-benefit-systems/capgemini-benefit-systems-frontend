@@ -5,6 +5,7 @@ import Top5Users from '../Home/Top5Users';
 import ProjectNameTextField from './ProjectNameTextField';
 import {userService} from '../../service/user.service';
 import App from '../../App'
+import SignedUsersTable from '../SignedUsersTable';
 
 export default class Project extends Component {
     constructor(props) {
@@ -76,6 +77,7 @@ export default class Project extends Component {
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
           <div style={namePositionStyle}><ProjectNameTextField label={"Project Name"} name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
         </div>
+        <SignedUsersTable projectId={this.state.id}/>
         <ProjectGrid state={this.state} projectProps={this.state} callbackParent={(newState) => this.onChildSaveClicked(newState)} />
       </div>
     )
