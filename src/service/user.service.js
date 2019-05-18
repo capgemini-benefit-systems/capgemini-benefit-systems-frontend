@@ -14,6 +14,7 @@ export const userService = {
     saveNewActivity,
     getUser,
     getActivitiesForProject,
+    addUserToActivity,
 };
 
 const config= {

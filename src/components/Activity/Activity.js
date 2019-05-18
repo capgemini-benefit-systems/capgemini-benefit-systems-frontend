@@ -47,10 +47,10 @@ export default class Activity extends Component {
             error => console.log(error) 
           );
          } else {
-          userService.addUserToProject(this.state.id)
+          userService.addUserToActivity(this.state.id)
           .then(result => {
             console.log(result)
-           this.props.history.push(`/`);
+            this.props.history.goBack();
             },
             error => console.log(error) 
           );
