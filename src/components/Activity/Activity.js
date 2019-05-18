@@ -42,9 +42,9 @@ export default class Activity extends Component {
           userService.saveNewActivity(this.state.title, newState.description, newState.startDate, newState.endDate, this.state.img, newState.maxUsers, newState.points, this.state.projectId)
           .then(result => {
             console.log(result)
-          //  this.props.history.push(`/`);
+            this.props.history.goBack();
             },
-            error => console.log(error) //this.setState({ error, loading: false })
+            error => console.log(error) 
           );
          } else {
           userService.addUserToProject(this.state.id)
@@ -52,7 +52,7 @@ export default class Activity extends Component {
             console.log(result)
            this.props.history.push(`/`);
             },
-            error => console.log(error) //this.setState({ error, loading: false })
+            error => console.log(error) 
           );
          }
       }

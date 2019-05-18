@@ -90,9 +90,7 @@ class ProjectGrid extends Component {
           }}
           margin="normal"
         />
-                 
         </Grid>
-  
         <Grid item xs={12} className={classes.descritpion}>
         <OutlinedTextField description={this.state.description} callbackParent={(newState) => this.onChildDescriptionChanged(newState) } />
         </Grid>
@@ -119,8 +117,7 @@ class ProjectGrid extends Component {
           <Banner title={"Activites"}/>
         </Paper>
       </Grid>
-
-      {this.state.activities.map((data) => {
+      {this.props.state.activities.map((data) => {
            return <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}><MiniActivity activity = {data}/></Paper>
         </Grid>

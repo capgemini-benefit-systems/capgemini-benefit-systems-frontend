@@ -24,17 +24,13 @@ export default class Project extends Component {
       }
 
       componentDidMount() {
-      console.log("AAAAAAAAAAa")
-      console.log(this.state.id)
       userService.getActivitiesForProject(this.state.id)
       .then(
         projectActivities => {
-          console.log(projectActivities)
           this.setState({
             activities: projectActivities,
           })
-        }
-      )
+        })
       }
 
       onChildNameChanged(newState) {
@@ -76,7 +72,6 @@ export default class Project extends Component {
   render() {
     return (
       <div>          
-        {console.log(this.state)}
         <div style={container}> 
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
           <div style={namePositionStyle}><ProjectNameTextField label={"Project Name"} name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>

@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { NavLink } from 'react-router-dom';
 import Dotdotdot from 'react-dotdotdot';
-import Project from '../Project/Project';
 import { Link } from 'react-router-dom'
 
 const styles = theme => ({
@@ -35,7 +34,8 @@ const styles = theme => ({
 
 function ComplexGrid(props) {
   const { classes } = props;
-  const project  = props.project
+  const activity  = props.activity
+  
   return (
     <div className={classes.root}>
       <Grid item md
@@ -49,16 +49,16 @@ function ComplexGrid(props) {
                 pathname: "/activity",
                 state: {
                   isEditMode: false,
-                  title: project.name,
-                  img: project.img,
-                  startDate: project.startDate,
-                  endDate: project.endDate,
-                  description: project.description,
-                  maxUsers: project.maxUsers,
-                  points: project.points,
-                  id: project.id,
+                  title: activity.name,
+                  img: activity.img,
+                  startDate: activity.startDate,
+                  endDate: activity.endDate,
+                  description: activity.description,
+                  maxUsers: activity.maxUsers,
+                  points: activity.points,
+                  id: activity.id,
                 }
-            }}><img width="100%" height="100%" src ="http://localhost:8080/api/project/1/photo"/></Link>
+            }}><img width="100%" height="100%" src ="http://localhost:8080/api/activity/1/photo"/></Link>
             </div>
         </Grid>
         
@@ -67,52 +67,52 @@ function ComplexGrid(props) {
                 pathname: "/activity",
                 state: {
                   isEditMode: false,
-                  title: project.name,
-                  img: project.img,
-                  startDate: project.startDate,
-                  endDate: project.endDate,
-                  description: project.description,
-                  maxUsers: project.maxUsers,
-                  points: project.points,
-                  id: project.id
+                  title: activity.name,
+                  img: activity.img,
+                  startDate: activity.startDate,
+                  endDate: activity.endDate,
+                  description: activity.description,
+                  maxUsers: activity.maxUsers,
+                  points: activity.points,
+                  id: activity.id
                 }
-                }}><Typography variant="h4">{project.name}</Typography></Link>
+                }}><Typography variant="h4">{activity.name}</Typography></Link>
         </Grid>
         <Grid item xs >
-          <Typography variant="h5" >Liczba Miejsc: {project.actualUsers}/{project.maxUsers}</Typography>
+          <Typography variant="h5" >Liczba Miejsc: {activity.actualUsers}/{activity.maxUsers}</Typography>
           <Link style={naviStyle} to={{
                 pathname: "/activity",
                 state: {
                   isEditMode: false,
-                  title: project.name,
-                  img: project.img,
-                  startDate: project.startDate,
-                  endDate: project.endDate,
-                  description: project.description,
-                  maxUsers: project.maxUsers,
-                  points: project.points,
-                  id: project.id
+                  title: activity.name,
+                  img: activity.img,
+                  startDate: activity.startDate,
+                  endDate: activity.endDate,
+                  description: activity.description,
+                  maxUsers: activity.maxUsers,
+                  points: activity.points,
+                  id: activity.id
                 }
                 }}>></Link>
         </Grid>
         <Grid item  xs>
             <Dotdotdot clamp={3}>
             <Typography variant="p">
-              {project.description}
+              {activity.description}
             </Typography>
             </Dotdotdot>
             <NavLink style={naviStyle} to={{
                 pathname: "/activity",
                 state: {
                   isEditMode: false,
-                  title: project.name,
-                  img: project.img,
-                  startDate: project.startDate,
-                  endDate: project.endDate,
-                  description: project.description,
-                  maxUsers: project.maxUsers,
-                  points: project.points,
-                  id: project.id
+                  title: activity.name,
+                  img: activity.img,
+                  startDate: activity.startDate,
+                  endDate: activity.endDate,
+                  description: activity.description,
+                  maxUsers: activity.maxUsers,
+                  points: activity.points,
+                  id: activity.id
                 }
                 }}></NavLink>
         </Grid>

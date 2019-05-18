@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { NavLink } from 'react-router-dom'
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -54,6 +55,9 @@ function CustomizedTable(props) {
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableBody>
+        <TableRow >
+              <CustomTableCell align="center"><NavLink exact to="/ranking">Ranking </NavLink></CustomTableCell>
+            </TableRow>
           {rows.map(row => (
             <TableRow className={classes.row} key={row.place}>
               <CustomTableCell align="left">{row.place}</CustomTableCell>
