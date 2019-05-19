@@ -44,10 +44,15 @@ function createRows(props) {
   var i = 1;
   console.log("PPPPPP")
   console.log(props.users)
-  props.users.map(user => (
-    rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
-    ))
-  return rows
+  if (props.users!==undefined){
+    props.users.map(user => (
+      rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
+      ))
+    return rows
+  } else{
+      rows.push(createData("No users signed yet"));
+    return rows
+  }
 }
 
 function CustomizedTable(props) {

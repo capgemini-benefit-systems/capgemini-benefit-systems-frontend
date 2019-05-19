@@ -12,11 +12,11 @@ export default class Banner extends Component {
 
   render() {
     return (
-        <header style = {bannerStyle}>    
-        <div>
+           
+        <div style = {bannerStyle}>
         {this.props.title}
         </div>
-        </header>
+        
     )
   }
 }

@@ -60,8 +60,10 @@ const rows = [
   { id: 'points', numeric: true, disablePadding: false, label: 'Points' },
 ];
 const textStyle = {
-  fontSize: '2rem',
+  fontSize: '3rem',
+  
 }
+
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
