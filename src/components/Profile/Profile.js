@@ -8,6 +8,7 @@ import Table from './Table';
 import ProfileData from './ProfileData';
 import Banner from '../Home/Banner';
 import { userService } from '../../service/user.service';
+import ProjectGrid from './ProjectGrid'
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -66,6 +67,12 @@ export default class Profile extends Component {
         })
       }
     )
+    userService.getProjectsForUser(userId)
+    .then(data => {
+      this.setState({ activeProjects:data })
+      },
+      error => console.log(error) //this.setState({ error, loading: false })
+    );
 
   }
 
@@ -78,13 +85,16 @@ export default class Profile extends Component {
             name={this.state.name} 
             surname={this.state.surname}
             points={this.state.points}
+            
             />
           </Grid>
           <Grid item xs={12}>
             <Paper>
-              <Banner title={"All Projects"}/>
-            <Paper/>
-        </Paper>
+              <Banner title={"My Projects"}/>
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+              <ProjectGrid myProjects={this.state.activeProjects}/>
           </Grid>
         
       </Grid>
