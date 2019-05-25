@@ -161,7 +161,7 @@ function getFinishedActivitiesForUser(userId) {
         "cache-control": "no-cache",},
         "processData": false,
     };
-    return fetch(`${config.apiUrl}/api/user/`+userId+`/activities/finished`, requestOptions)
+    return fetch(`${config.apiUrl}/api/acitivity/user/`+userId+`/finished`, requestOptions)
         .then(handleResponse)
         .then(response => {
             if (response) {
@@ -178,7 +178,7 @@ function getAcitveActivitiesForUser(userId) {
         "cache-control": "no-cache",},
         "processData": false,
     };
-    return fetch(`${config.apiUrl}/api/user/`+userId+`/activities/notFinished`, requestOptions)
+    return fetch(`${config.apiUrl}/api/activity/user/`+userId+`/notFinished`, requestOptions)
         .then(handleResponse)
         .then(response => {
             if (response) {
