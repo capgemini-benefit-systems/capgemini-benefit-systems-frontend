@@ -17,6 +17,8 @@ export const userService = {
     addUserToActivity,
     getUsersForActivity,
     getUsersForProject,
+    getFinishedActivitiesForUser,
+    getAcitveActivitiesForUser,
 };
 
 const config= {
@@ -152,6 +154,40 @@ function getProjectsForUser(userId) {
         });
 }
 
+function getFinishedActivitiesForUser(userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/activities/finished`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
+function getAcitveActivitiesForUser(userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/activities/notFinished`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            if (response) {
+                console.log(response);
+            }
+            return response;
+        });
+}
+
 function saveNewActivity(name, description, startDate, endDate, img, maxUsers, points, projectId) {
     const requestOptions = {
         method: 'POST',
@@ -203,6 +239,8 @@ function getActivitiesForProject(projectId) {
             return response;
         });
 }
+
+
 
 function getUsersForProject(projectId) {
     const requestOptions = {

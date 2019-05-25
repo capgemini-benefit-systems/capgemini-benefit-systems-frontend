@@ -67,13 +67,16 @@ export default class Profile extends Component {
         })
       }
     )
-    userService.getProjectsForUser(userId)
+    userService.getAcitveActivitiesForUser(userId)
     .then(data => {
-      this.setState({ activeProjects:data })
+        this.setState({ activeProjects:data }) 
+      },    
+    )
+    userService.getFinishedActivitiesForUser(userId)
+    .then(data => {
+        this.setState({ historyProjects:data })  
       },
-      error => console.log(error) //this.setState({ error, loading: false })
     );
-
   }
 
   render() {
@@ -90,11 +93,19 @@ export default class Profile extends Component {
           </Grid>
           <Grid item xs={12}>
             <Paper>
-              <Banner title={"My Projects"}/>
+              <Banner title={"Active Activities"}/>
             </Paper>
           </Grid>
           <Grid item xs={12}>
               <ProjectGrid myProjects={this.state.activeProjects}/>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper>
+              <Banner title={"Historical Activities"}/>
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+              <ProjectGrid myProjects={this.state.historyProjects}/>
           </Grid>
         
       </Grid>

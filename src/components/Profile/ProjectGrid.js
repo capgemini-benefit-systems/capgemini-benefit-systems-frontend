@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import MinimizeProject from './MinimizeProject';
+import Miniactivity from '../Activity/MiniActivity';
 
 const styles = theme => ({
   root: {
@@ -26,7 +26,7 @@ function CenteredGrid(props) {
         
       {myProjects.map((data) => {
            return <Grid item xs={6} sm={3}>
-          <Paper ><MinimizeProject project = {data}/></Paper>
+          <Paper ><Miniactivity activity = {data}/></Paper>
         </Grid>
           })}
       </Grid>
