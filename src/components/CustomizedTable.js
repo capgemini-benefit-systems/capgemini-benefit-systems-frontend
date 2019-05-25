@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { NavLink } from 'react-router-dom'
+import { Button} from "react-bootstrap";
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -42,12 +43,16 @@ function createData(place, img, name, points) {
 function createRows(props) {
   let rows = []
   var i = 1;
-  console.log("PPPPPP")
-  console.log(props.users)
-  props.users.map(user => (
-    rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
-    ))
-  return rows
+  if (props.users != undefined) {
+    props.users.map(user => (
+      rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
+      ))
+    return rows
+  }
+}
+
+function approved() {
+
 }
 
 function CustomizedTable(props) {
@@ -62,19 +67,37 @@ function CustomizedTable(props) {
     <CustomTableCell align="center"><NavLink exact to="/ranking">Ranking </NavLink></CustomTableCell>
     </TableRow>
   }
+
+  var approveBtn = <Button
+  block
+  bsSize="large"
+  //onClick={this.approved()}
+  type="submit"
+>
+  +
+</Button>
+
+  var cells
+  if (typeof rows != undefined) {
+    cells = rows.map(row => (
+      <TableRow className={classes.row} key={row.place}>
+        <CustomTableCell align="left">{row.place}</CustomTableCell>
+        <CustomTableCell align="right">{row.img}</CustomTableCell>
+        <CustomTableCell align="right">{row.name}</CustomTableCell>
+        <CustomTableCell align="right">{row.points}</CustomTableCell>
+        <CustomTableCell align="right">{approveBtn}</CustomTableCell>
+      </TableRow>
+    ))
+  } else {
+    cells = <div></div>
+  }
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableBody>
         {header}
-          {rows.map(row => (
-            <TableRow className={classes.row} key={row.place}>
-              <CustomTableCell align="left">{row.place}</CustomTableCell>
-              <CustomTableCell align="right">{row.img}</CustomTableCell>
-              <CustomTableCell align="right">{row.name}</CustomTableCell>
-              <CustomTableCell align="right">{row.points}</CustomTableCell>
-            </TableRow>
-          ))}
+        {cells}
         </TableBody>
       </Table>
     </Paper>

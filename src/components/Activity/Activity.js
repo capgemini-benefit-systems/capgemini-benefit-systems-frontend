@@ -50,13 +50,28 @@ export default class Activity extends Component {
          } else {
           let user = JSON.parse(localStorage.getItem('user'))
           let userId = parseInt(user.accountId) + 1
-          userService.addUserToActivity(this.state.id, userId)
-          .then(result => {
-            console.log(result)
-            this.props.history.goBack();
+          userService.getUsersForProject(this.state.projectId)
+            .then(data =>{
+              var isInProject
+              if(data != undefined) {
+                isInProject = data.filter( val => {
+                  return parseInt(val.id) == userId
+                })
+              }
+              else {
+                isInProject = 0
+              }
+              if (isInProject.length > 0) {
+                userService.addUserToActivity(this.state.id, userId)
+                .then(result => {
+                  console.log(result)
+                  this.props.history.goBack();
+                  },
+                  error => console.log(error) 
+                );
+              }
             },
-            error => console.log(error) 
-          );
+            error=> console.log(error))
          }
       }
 

@@ -57,6 +57,7 @@ function ComplexGrid(props) {
                   maxUsers: activity.maxUsers,
                   points: activity.points,
                   id: activity.id,
+                  projectId: props.projectId
                 }
             }}><img width="100%" height="100%" src ="http://localhost:8080/api/activity/1/photo"/></Link>
             </div>
@@ -74,7 +75,8 @@ function ComplexGrid(props) {
                   description: activity.description,
                   maxUsers: activity.maxUsers,
                   points: activity.points,
-                  id: activity.id
+                  id: activity.id,
+                  projectId: props.projectId
                 }
                 }}><Typography variant="h4">{activity.name}</Typography></Link>
         </Grid>
@@ -91,7 +93,8 @@ function ComplexGrid(props) {
                   description: activity.description,
                   maxUsers: activity.maxUsers,
                   points: activity.points,
-                  id: activity.id
+                  id: activity.id,
+                  projectId: props.projectId
                 }
                 }}>></Link>
         </Grid>
@@ -112,7 +115,8 @@ function ComplexGrid(props) {
                   description: activity.description,
                   maxUsers: activity.maxUsers,
                   points: activity.points,
-                  id: activity.id
+                  id: activity.id,
+                  projectId: props.projectId
                 }
                 }}></NavLink>
         </Grid>
