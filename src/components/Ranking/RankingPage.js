@@ -25,8 +25,8 @@ export default class RankingPage extends Component {
 
   render() {
     return (
-      <div>
-        <Ranking users={this.state.users}/>         
+      <div >
+        <Ranking  users={this.state.users}/>         
       </div>
     )
   }
