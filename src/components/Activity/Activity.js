@@ -76,6 +76,7 @@ export default class Activity extends Component {
       }
 
   render() {
+    console.log(this.state.id)
     return (
       <div>          
         <div style={container}> 

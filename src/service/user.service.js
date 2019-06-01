@@ -19,6 +19,8 @@ export const userService = {
     getUsersForProject,
     getFinishedActivitiesForUser,
     getAcitveActivitiesForUser,
+    addPoints,
+    endActivity,
 };
 
 const config= {
@@ -233,9 +235,6 @@ function getActivitiesForProject(projectId) {
     return fetch(`${config.apiUrl}/api/activity/`+projectId+`/activities`, requestOptions)
         .then(handleResponse)
         .then(response => {
-            if (response) {
-                console.log(response);
-            }
             return response;
         });
 }
@@ -249,8 +248,6 @@ function getUsersForProject(projectId) {
         "cache-control": "no-cache",},
         "processData": false,
     };
-    console.log("VVVVVVVVv")
-    console.log(projectId)
     return fetch(`${config.apiUrl}/api/project/`+projectId+`/users`, requestOptions)
         .then(handleResponse)
         .then(response => {
@@ -292,6 +289,36 @@ function getUser(userId) {
             if (response) {
                 console.log(response);
             }
+            return response;
+        });
+}
+
+function addPoints(activityId, userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/addPoints/`+activityId, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            return response;
+        });
+}
+
+function endActivity(activityId, userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+    return fetch(`${config.apiUrl}/api/user/`+userId+`/endActivity/`+activityId, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            console.log(response)
+            console.log("rrrr")
             return response;
         });
 }

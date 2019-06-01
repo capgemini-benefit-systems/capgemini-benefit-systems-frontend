@@ -34,7 +34,7 @@ export default class SignedUsersTable extends Component {
   render() {
     return (
       <div style={tableStyle}>
-        <CustomizedTable users={this.state.users}/>
+        <CustomizedTable activityId={this.props.activityId} users={this.state.users}/>
       </div>
     )
   }

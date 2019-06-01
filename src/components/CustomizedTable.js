@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { NavLink } from 'react-router-dom'
 import { Button} from "react-bootstrap";
+import { userService } from '../service/user.service';
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -51,10 +52,6 @@ function createRows(props) {
   }
 }
 
-function approved() {
-
-}
-
 function CustomizedTable(props) {
   const { classes } = props;
   let rows = createRows(props)
@@ -66,24 +63,30 @@ function CustomizedTable(props) {
     header = <TableRow >
     <CustomTableCell align="center"><NavLink exact to="/ranking">Ranking </NavLink></CustomTableCell>
     </TableRow>
+  } else if (props.activityId != undefined) {
+    var approveBtn = <Button
+    block
+    bsSize="large"
+    onClick={event => {
+      let user = JSON.parse(localStorage.getItem('user'))
+      let userId = parseInt(user.accountId) + 1
+      // props.users[1].id
+      userService.addPoints(props.activityId, props.users[1].id)
+      userService.endActivity(props.activityId, props.users[1].id)
+    }}
+    type="submit"
+  >
+    +
+  </Button>
   }
-
-  var approveBtn = <Button
-  block
-  bsSize="large"
-  //onClick={this.approved()}
-  type="submit"
->
-  +
-</Button>
 
   var cells
   if (typeof rows != undefined) {
     cells = rows.map(row => (
       <TableRow className={classes.row} key={row.place}>
-        <CustomTableCell align="left">{row.place}</CustomTableCell>
-        <CustomTableCell align="right">{row.img}</CustomTableCell>
-        <CustomTableCell align="right">{row.name}</CustomTableCell>
+        {/* <CustomTableCell align="left">{row.place}</CustomTableCell> */}
+        {/* <CustomTableCell align="right">{row.img}</CustomTableCell> */}
+        <CustomTableCell align="left">{row.name}</CustomTableCell>
         <CustomTableCell align="right">{row.points}</CustomTableCell>
         <CustomTableCell align="right">{approveBtn}</CustomTableCell>
       </TableRow>
