@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { userService } from '../service/user.service';
+import Popup from "reactjs-popup";
+import { Button, FormGroup, FormControl, Form } from "react-bootstrap";
 
 export default class Header extends Component {
 
@@ -48,6 +50,40 @@ export default class Header extends Component {
       <header style = {headerStyle}>
       <NavLink style={logoStyle} exact to="/home"> Benefit Systems </NavLink>
       <div  style={{float:'right'}} className="logo">
+      <Popup trigger={<button> Awards</button>} position="left center">
+        <div>
+        <Popup trigger={<button> Add award</button>} position="bottom center">
+        <div>
+        <form onSubmit={this.handleSubmit}>
+          <FormGroup controlId="username" bsSize="large">
+            <Form.Label>Award's Name</Form.Label>
+            <FormControl
+              autoFocus
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="password" bsSize="large">
+            <Form.Label>Points Cost</Form.Label>
+            <FormControl
+              value={this.state.password}
+              onChange={this.handleChange}
+              type="password"
+            />
+          </FormGroup>
+          <Button
+            block
+            bsSize="large"
+            type="submit"
+          >
+            Login
+          </Button>
+        </form>
+        </div>
+      </Popup>
+        </div>
+      </Popup>
       <NavLink style={profileStyle} exact to="/profile"> {this.state.name + " " + this.state.surname} </NavLink>
       
       {logout}
