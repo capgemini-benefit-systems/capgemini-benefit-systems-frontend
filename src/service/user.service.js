@@ -22,6 +22,7 @@ export const userService = {
     addPoints,
     endActivity,
     addAward,
+    getAllAwards,
 };
 
 const config= {
@@ -115,6 +116,21 @@ function getAllProjects() {
     };
 
     return fetch(`${config.apiUrl}/api/project/all`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            return response;
+        });
+}
+
+function getAllAwards() {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+
+    return fetch(`${config.apiUrl}/api/award/all`, requestOptions)
         .then(handleResponse)
         .then(response => {
             return response;
@@ -332,11 +348,11 @@ function addAward(name, cost) {
         "processData": false,
         body: JSON.stringify({ name, cost }),
     };
-    
+    console.log(requestOptions.body)
     return fetch(`${config.apiUrl}/api/award/add`, requestOptions)
         .then(handleResponse)
         .then(award => {
-            return user;
+            return award;
         });
 }
 
