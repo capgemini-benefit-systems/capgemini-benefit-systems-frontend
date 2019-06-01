@@ -21,6 +21,7 @@ export const userService = {
     getAcitveActivitiesForUser,
     addPoints,
     endActivity,
+    addAward,
 };
 
 const config= {
@@ -320,6 +321,22 @@ function endActivity(activityId, userId) {
             console.log(response)
             console.log("rrrr")
             return response;
+        });
+}
+
+function addAward(name, cost) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+        body: JSON.stringify({ name, cost }),
+    };
+    
+    return fetch(`${config.apiUrl}/api/award/add`, requestOptions)
+        .then(handleResponse)
+        .then(award => {
+            return user;
         });
 }
 
