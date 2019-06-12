@@ -23,6 +23,7 @@ export const userService = {
     endActivity,
     addAward,
     getAllAwards,
+    isProjectAdmin,
 };
 
 const config= {
@@ -356,6 +357,20 @@ function addAward(name, cost) {
         });
 }
 
+function isProjectAdmin(activityId, userId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
+        "cache-control": "no-cache",},
+        "processData": false,
+    };
+
+    return fetch(`${config.apiUrl}/api/project/all`, requestOptions)
+        .then(handleResponse)
+        .then(response => {
+            return response;
+        });
+}
 function logout() {
     localStorage.removeItem('user');
 }
@@ -377,3 +392,4 @@ function handleResponse(response) {
         return data;
     });
 }
+

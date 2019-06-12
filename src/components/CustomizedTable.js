@@ -69,10 +69,10 @@ function CustomizedTable(props) {
     bsSize="large"
     onClick={event => {
       let user = JSON.parse(localStorage.getItem('user'))
-      let userId = parseInt(user.accountId) + 1
+      let userId = parseInt(user.accountId) + 0
       // props.users[1].id
-      userService.addPoints(props.activityId, props.users[1].id)
-      userService.endActivity(props.activityId, props.users[1].id)
+      userService.addPoints(props.activityId, props.users[0].id)
+      userService.endActivity(props.activityId, props.user1[1].id)
     }}
     type="submit"
   >
@@ -81,7 +81,7 @@ function CustomizedTable(props) {
   }
 
   var cells
-  if (typeof rows != undefined) {
+  if (rows != undefined) {
     cells = rows.map(row => (
       <TableRow className={classes.row} key={row.place}>
         {/* <CustomTableCell align="left">{row.place}</CustomTableCell> */}

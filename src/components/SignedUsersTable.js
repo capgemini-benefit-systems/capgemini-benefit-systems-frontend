@@ -30,13 +30,21 @@ export default class SignedUsersTable extends Component {
             })
           }
       }
-      
+     
   render() {
-    return (
-      <div style={tableStyle}>
-        <CustomizedTable activityId={this.props.activityId} users={this.state.users}/>
-      </div>
-    )
+    console.log("typ: " + typeof this.state.users)
+    var emptyDiv= <div></div>;
+    if (this.state.users == "") {
+      return emptyDiv;  
+    } else {
+      return (
+        
+        <div style={tableStyle}>
+          <CustomizedTable activityId={this.props.activityId} users={this.state.users}/>
+        </div>
+      )
+    }
+   
   }
 }
 
