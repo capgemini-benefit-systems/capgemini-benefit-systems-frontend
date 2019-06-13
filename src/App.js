@@ -9,6 +9,7 @@ import { PrivateRoute } from './components/Authorization/PrivateRoute';
 import Login from './components/Authorization/Login';
 import Register from './components/Authorization/Register';
 import RankingPage from './components/Ranking/RankingPage';
+import AwardsPage from './components/Awards/AwardsPage';
 class App extends Component {
   render() {
     return (
@@ -24,6 +25,7 @@ class App extends Component {
       <PrivateRoute exact path="/activity" component={Activity} />
       <PrivateRoute exact path="/new_activity" component={Activity}/>
       <PrivateRoute exact path="/ranking" component={RankingPage}/>
+      <PrivateRoute exact path="/awards" component={AwardsPage}/>
       </div>
     );
   }

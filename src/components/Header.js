@@ -91,6 +91,7 @@ export default class Header extends Component {
 
       rows.push(cost, awardsName)
       ))
+      console.log(rows)
     return rows
   }
 }
@@ -151,7 +152,7 @@ export default class Header extends Component {
         </form>
         </div>
       </Popup>
-      <Popup trigger={<button> Show</button>} position="bottom center">
+      <Popup trigger={<button><NavLink exact to="/awards">Show</NavLink> </button>} position="bottom center">
         <div>
           
         <Paper>
