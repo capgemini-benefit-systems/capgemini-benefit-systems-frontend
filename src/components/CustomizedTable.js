@@ -37,8 +37,8 @@ const styles = theme => ({
   },
 });
 
-function createData(place, img, name, points) {
-  return { place, img, name, points };
+function createData(place, img, name, points, id) {
+  return { place, img, name, points, id };
 }
 
 function createRows(props) {
@@ -46,7 +46,7 @@ function createRows(props) {
   var i = 1;
   if (props.users != undefined) {
     props.users.map(user => (
-      rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum))
+      rows.push(createData(i++, user.img, user.name + " " + user.surname, user.pointsSum, user.id))
       ))
     return rows
   }
@@ -72,7 +72,7 @@ function CustomizedTable(props) {
       let userId = parseInt(user.accountId) + 0
       // props.users[1].id
       userService.addPoints(props.activityId, props.users[0].id)
-      userService.endActivity(props.activityId, props.user1[1].id)
+      userService.endActivity(props.activityId, props.user1[0].id)
     }}
     type="submit"
   >
@@ -82,18 +82,45 @@ function CustomizedTable(props) {
 
   var cells
   if (rows != undefined) {
-    cells = rows.map(row => (
-      <TableRow className={classes.row} key={row.place}>
-        {/* <CustomTableCell align="left">{row.place}</CustomTableCell> */}
-        {/* <CustomTableCell align="right">{row.img}</CustomTableCell> */}
-        <CustomTableCell align="left">{row.name}</CustomTableCell>
-        <CustomTableCell align="right">{row.points}</CustomTableCell>
-        <CustomTableCell align="right">{approveBtn}</CustomTableCell>
-      </TableRow>
-    ))
-  } else {
-    cells = <div></div>
-  }
+    if (props.activityId != undefined) {
+      cells = rows.map(row => (
+        <TableRow className={classes.row} key={row.place}>
+          {/* <CustomTableCell align="left">{row.place}</CustomTableCell> */}
+          {/* <CustomTableCell align="right">{row.img}</CustomTableCell> */}
+          <CustomTableCell align="left">{row.name}</CustomTableCell>
+          <CustomTableCell align="right">{row.points}</CustomTableCell>
+          
+          <CustomTableCell align="right">{
+  
+            <Button
+              block
+              bsSize="large"
+              onClick={event => {
+                userService.addPoints(props.activityId, row.id)
+                userService.endActivity(props.activityId, row.id)
+              }}
+              type="submit"
+              >
+              +
+            </Button>
+  
+          }</CustomTableCell>
+        </TableRow>
+      ))
+    } else {
+      cells = rows.map(row => (
+        <TableRow className={classes.row} key={row.place}>
+          {/* <CustomTableCell align="left">{row.place}</CustomTableCell> */}
+          {/* <CustomTableCell align="right">{row.img}</CustomTableCell> */}
+          <CustomTableCell align="left">{row.name}</CustomTableCell>
+          <CustomTableCell align="right">{row.points}</CustomTableCell>
+        </TableRow>
+      ))
+    }
+
+    } else {
+      cells = <div></div>
+    }
 
   return (
     <Paper className={classes.root}>
