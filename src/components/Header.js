@@ -115,7 +115,8 @@ export default class Header extends Component {
     } else {
       cells = <div></div>
     }
-
+  
+    
     return (
       <header style = {headerStyle}>
       <NavLink style={logoStyle} exact to="/home"> Benefit Systems </NavLink>
@@ -153,7 +154,7 @@ export default class Header extends Component {
         </div>
       </Popup>
       <Popup trigger={<button><NavLink exact to="/awards">Show</NavLink> </button>} position="bottom center">
-        <div>
+      {/* <div>
           
         <Paper>
       <Table>
@@ -163,7 +164,7 @@ export default class Header extends Component {
       </Table>
       </Paper>
 
-        </div>
+        </div>*/} 
       </Popup>
         </div>
       </Popup>
