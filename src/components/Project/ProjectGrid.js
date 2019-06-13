@@ -118,11 +118,11 @@ class ProjectGrid extends Component {
         </Paper>
       </Grid>
       {this.props.state.activities.map((data) => {
-           return <Grid item xs={12} sm={6}>
+           return <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}><MiniActivity projectId = {this.state.id} activity = {data}/></Paper>
         </Grid>
           })}
-                  <Grid  item xs={12} sm={6}>
+                  <Grid  item xs={6} sm={3}>
           <Paper className={classes.paper}><AddActivity projectId = {this.state.id} /></Paper>
         </Grid>
 

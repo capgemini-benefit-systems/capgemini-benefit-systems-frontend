@@ -52,7 +52,7 @@ function CenteredGrid(props) {
       </Grid>
 
       {myProjects.map((data) => {
-           return <Grid item xs={12} sm={6}>
+           return <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}><MiniProject project = {data}/></Paper>
         </Grid>
           })}
@@ -64,11 +64,11 @@ function CenteredGrid(props) {
       </Grid>
       
       {projects.map((data) => {
-           return <Grid item xs={12} sm={6}>
+           return <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}><MiniProject project = {data}/></Paper>
         </Grid>
           })}
-        <Grid  item xs={12} sm={6}>
+        <Grid  item xs={6} sm={3}>
           <Paper className={classes.paper}><AddProject/></Paper>
         </Grid>
       </Grid>
