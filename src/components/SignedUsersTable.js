@@ -32,7 +32,7 @@ export default class SignedUsersTable extends Component {
       }
      
   render() {
-    console.log("typ: " + typeof this.state.users)
+    console.log("typ: " + this.props.projectId)
     var emptyDiv= <div></div>;
     if (this.state.users == "") {
       return emptyDiv;  
@@ -40,7 +40,7 @@ export default class SignedUsersTable extends Component {
       return (
         
         <div style={tableStyle}>
-          <CustomizedTable activityId={this.props.activityId} users={this.state.users}/>
+          <CustomizedTable activityId={this.props.activityId} projectId={this.props.projectId} users={this.state.users}/>
         </div>
       )
     }

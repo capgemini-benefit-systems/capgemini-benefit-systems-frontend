@@ -82,7 +82,7 @@ export default class Activity extends Component {
           <img src="img/defaultImage.jpg" height="500" style={imgStyle} alt="Project Image"></img>
           <div style={namePositionStyle}><ProjectNameTextField label={"Activity Name"} name={this.state.title} callbackParent={(newState) => this.onChildNameChanged(newState)}/></div>
         </div>
-        <SignedUsersTable activityId={this.state.id} isActivity={true}/>
+        <SignedUsersTable activityId={this.state.id} projectId={this.state.projectId} isActivity={true}/>
         <ActivityGrid state={this.state} projectProps={this.state} callbackParent={(newState) => this.onChildSaveClicked(newState)} />
       </div>
     )

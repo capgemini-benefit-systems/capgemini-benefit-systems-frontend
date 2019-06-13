@@ -357,7 +357,7 @@ function addAward(name, cost) {
         });
 }
 
-function isProjectAdmin(activityId, userId) {
+function isProjectAdmin(projectId, userId) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json',
@@ -365,10 +365,13 @@ function isProjectAdmin(activityId, userId) {
         "processData": false,
     };
 
-    return fetch(`${config.apiUrl}/api/project/all`, requestOptions)
+    return fetch(`${config.apiUrl}/api/project/`+projectId+`/user/`+userId+`/permissions`, requestOptions)
         .then(handleResponse)
         .then(response => {
-            return response;
+            if(response.permissions == "ADMINISTRATOR") {
+                return true;
+            }
+            return false;
         });
 }
 function logout() {

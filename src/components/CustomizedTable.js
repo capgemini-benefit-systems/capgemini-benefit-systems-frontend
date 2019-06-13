@@ -63,26 +63,13 @@ function CustomizedTable(props) {
     header = <TableRow >
     <CustomTableCell align="center"><NavLink exact to="/ranking">Ranking </NavLink></CustomTableCell>
     </TableRow>
-  } else if (props.activityId != undefined) {
-    var approveBtn = <Button
-    block
-    bsSize="large"
-    onClick={event => {
-      let user = JSON.parse(localStorage.getItem('user'))
-      let userId = parseInt(user.accountId) + 0
-      // props.users[1].id
-      userService.addPoints(props.activityId, props.users[0].id)
-      userService.endActivity(props.activityId, props.user1[0].id)
-    }}
-    type="submit"
-  >
-    +
-  </Button>
-  }
+  } 
 
   var cells
   if (rows != undefined) {
-    if (props.activityId != undefined) {
+    let user = JSON.parse(localStorage.getItem('user'))
+      let userId = parseInt(user.accountId) + 1
+    if (props.activityId != undefined && userService.isProjectAdmin(props.projectId, userId)) {
       cells = rows.map(row => (
         <TableRow className={classes.row} key={row.place}>
           {/* <CustomTableCell align="left">{row.place}</CustomTableCell> */}
@@ -91,7 +78,6 @@ function CustomizedTable(props) {
           <CustomTableCell align="right">{row.points}</CustomTableCell>
           
           <CustomTableCell align="right">{
-  
             <Button
               block
               bsSize="large"
