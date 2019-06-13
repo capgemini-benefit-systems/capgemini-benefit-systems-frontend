@@ -76,8 +76,13 @@ class ActivityGrid extends Component {
         <Grid container className={classes.cont} spacing ={32}>
         <Grid item xs={12}>      
          {/* <Paper className={classes.paper}>*/ }
+         <div style = {bannerStyle}> 
         <Datepick date={this.state.startDate} label={"Start Date"} callbackParent={(newState) => this.onChildStartDateChanged(newState) }/>
+        </div>
+        <div style = {bannerStyle}>
         <Datepick date={this.state.endDate} label={"End Date"} callbackParent={(newState) => this.onChildEndDateChanged(newState) }/>
+        </div>
+        <div style = {bannerStyle}>
         <TextField style={maxusersStyle}
           id="standard-number"
           label="Max users"
@@ -89,7 +94,10 @@ class ActivityGrid extends Component {
             shrink: true,
           }}
           margin="normal"
-        />         
+          
+        />  
+        </div>
+        <div style = {bannerStyle}>       
         <TextField style={maxusersStyle}
           id="standard-number"
           label="Points"
@@ -102,6 +110,7 @@ class ActivityGrid extends Component {
           }}
           margin="normal"
         />
+        </div>
         </Grid>
   
         <Grid item xs={12} className={classes.descritpion}>
@@ -180,7 +189,7 @@ const projectStyle = {
 }
 
 const maxusersStyle = {
-  marginLeft: '9.5%',
+ // marginLeft: '9.5%',
 }
 
 const saveStyle = {
@@ -189,6 +198,18 @@ const saveStyle = {
   fontSize: '2rem',
   padding:'1rem',
   color: '#696969',
+}
+
+const bannerStyle = {
+  background: '#FBFBFB', //#fff
+  textAlign: 'center',
+
+ // padding:'1rem',
+  marginBottom: '10px',
+  color: '#696969',
+  borderRadius: '5px',
+ boxShadow: '3px 1px 17px -9px rgba(0,0,0,0.75)',
+
 }
 const styles = theme => ({
   root: {

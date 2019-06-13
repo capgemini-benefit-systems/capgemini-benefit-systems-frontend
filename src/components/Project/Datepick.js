@@ -8,7 +8,7 @@ import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pic
 
 const styles = {
   grid: {
-    width: '30%',
+    width: '100%',
   },
 };
 
