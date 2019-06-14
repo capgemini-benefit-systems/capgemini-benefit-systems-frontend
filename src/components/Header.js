@@ -121,9 +121,10 @@ export default class Header extends Component {
       <header style = {headerStyle}>
       <NavLink style={logoStyle} exact to="/home"> Benefit Systems </NavLink>
       <div  style={{float:'right'}} className="logo">
-      <Popup trigger={<button> Awards</button>} position="left center">
+  
+      <Popup trigger={<button style={saveStyle}> Awards</button>} position="left center">
         <div>
-        <Popup trigger={<button> Add</button>} position="bottom center">
+        <Popup  trigger={<button style={popupStyle}> Add</button>} position="bottom center">
         <div>
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="awardsName" bsSize="large">
@@ -153,7 +154,8 @@ export default class Header extends Component {
         </form>
         </div>
       </Popup>
-      <Popup trigger={<button><NavLink exact to="/awards">Show</NavLink> </button>} position="bottom center">
+      <button style={popupStyle}><NavLink style={profileStyle} exact to="/awards">Show</NavLink> </button>
+      
       {/* <div>
           
         <Paper>
@@ -165,7 +167,6 @@ export default class Header extends Component {
       </Paper>
 
         </div>*/} 
-      </Popup>
         </div>
       </Popup>
       <NavLink style={profileStyle} exact to="/profile"> {this.state.name + " " + this.state.surname} </NavLink>
@@ -175,6 +176,26 @@ export default class Header extends Component {
       </header>
     )
   }
+}
+const saveStyle = {
+  background: '#FFFFFF', //#fff
+  border: 'none',
+  textAlign: 'center',
+  textDecoration: 'none',
+  display: 'inline-block',
+  fontSize: '16px',
+  marginRight: '30px',
+  color: '#3b90b2',
+}
+
+const popupStyle = {
+  background: '#FFFFFF',
+  border: 'none',
+  textAlign: 'center',
+  textDecoration: 'none',
+  display: 'inline-block',
+  fontSize: '16px',
+  color: '#black',
 }
 
 const headerStyle = {
